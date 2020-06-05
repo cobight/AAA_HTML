@@ -65,28 +65,38 @@ td单元格默认字体，靠左
 th单元格黑色粗体，剧中，性值是td
 
 
-<table border='0' bgcolor='red #000 rgb(255,255,255)' cellspacing='0' cellpadding='0'>
-    <caption>表格标题</caption>
-    <thead>
-    	<tr>
-        	<td>
-            	头部table
-            </td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-            	身体table
-            </td>
-        </tr>
-    </tbody>
-    <tr>
-    	<td>
-        	其他内容
-        </td>
-    </tr>
-</table>
+<table border='1' bgcolor='red #000 rgb(255,255,255)' cellspacing='0' cellpadding='0'>
+		    <caption>表格标题</caption>
+		    <thead>
+		    	<tr>
+		        	<td rowspan='2'>
+		            	头部
+		            </td>
+					<td>nr </td>
+		        </tr>
+				<tr>
+					<td>单元格</td>
+					
+				</tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+		            <td colspan="2">
+		            	身体
+		            </td>
+		        </tr>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+				</tr>
+				
+		    </tbody>
+		    <tr>
+		    	<td>
+		        	其他内容
+		        </td>
+		    </tr>
+		</table>
 ```
 
 ### 属性特效
@@ -95,5 +105,7 @@ th单元格黑色粗体，剧中，性值是td
 table标签的style属性加了text-align:center;  就会表格里所有文字居中。
 option标签的style属性加了text-align:center; 就会标题内容剧中。
 设置td列所占的百分比：不管在哪里，只会使最大的td的width有效，不论是百分比还是固定值，所以一列的宽度受最大的td的width值影响thead/tbody不会分割。
+rowspan占多行
+colspan占多列
 ```
 
