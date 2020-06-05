@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="#foot">ddd
+		</a>
+		<a name="top"></a>
+		<p>nimade </p>
+		<a href="路径目标" target="链接打开方式">11</a>
+		<a href="" target="">2&nbsp;2</a>
+		<ol>
+			<li><img src="../img/bofang.png " title="符号"/></li>
+			<li><img src="../img/bofang.png " title="符号"/></li>
+			<li><img src="../img/bofang.png " title="符号"/></li>
+			<li><img src="../img/bofang.png " title="符号"/></li>
+			<li><img src="../img/bofang.png " title="符号"/></li>
+		</ol>
+		<img src="../img/bofang.png " title="符号"/>
+		<img src="../img/bofang.png " title="符号"/>
+		<img src="../img/bofang.png " title="符号"/>
+		<a href="../mmm.html">111111</a>
+		<p>1111</p>
+		<a href="#top">ss
+		<a name="foot"></a></a>
+		<table border="5" align="center" cellpadding="5" cellspacing="0">
+			<tr bgcolor="red">
+				<td bgcolor="blue" colspan="2">单元格</td>
+				<td>单元格</td>
+				<td>单元格</td>
+				<td>单元格</td>
+				<td background="../img/Cobight_ico.png">单元格</td>
+			</tr>
+			<tr>
+				<td bgColor="red" rowspan="3">单元格</td>
+				<td>单元格</td>
+				<td>&reg;单元格</td>
+				<td>&lt;单元格&gt;</td>
+				<td>&copy单元格</td>
+			</tr>
+			<tr>
+				<td><table border="5">
+									<tr>
+										
+										<td colspan="2">单元格</td>
+										<td>单元格</td>
+										<td>单元格</td>
+									</tr>
+									<tr>
+										
+										<td>单元格</td>
+										<td>单元格</td>
+										<td>单元格</td>
+									</tr>
+								</table></td>
+				<td>单元格</td>
+				<td>单元格</td>
+				<td>单元格</td>
+				<td>单元格</td>
+			</tr>
+			<tr>
+				<td>
+					<table border="5">
+						<tr>
+							
+							<td>单元格</td>
+							<td>单元格</td>
+							<td>单元格</td>
+						</tr>
+						<tr>
+							
+							<td>单元格</td>
+							<td>单元格</td>
+							<td>
+								<table border="5">
+									<tr>
+										
+										<td wight="80%">单元格</td>
+										<td>单元格</td>
+										<td>单元格</td>
+									</tr>
+									<tr>
+										
+										<td>单元格</td>
+										<td>单元格</td>
+										<td>单元格</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td>单元格</td>
+				<td>单元格</td>
+				<td>单元格</td>
+				<td>单元格</td>
+			</tr>
+		</table>
+		&lt;gg&gt;
+		
+	</body>
+</html>
