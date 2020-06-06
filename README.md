@@ -109,25 +109,26 @@ rowspan占多行
 colspan占多列
 ```
 
-# 输入框
+### 输入框
 
 ```html
 <input type="text" value="显示内容" placeholder="提示内容"/>
 <textarea cols="200" rows="10" readonly>输入框,一行200个字符，高度显示10行内容，多余的出现滚动条</textarea>
 ```
 
-# 选择框
+### 选择框
 
 ```html
 下拉选择框
+selected是确定当前选中项
 <select>
     <option>郑州</option>
-    <option>南阳</option>
+    <option selected>南阳</option>
     <option>洛阳</option>
 </select>
 ```
 
-# 表单
+### 表单
 
 ```html
 form设置action为#表示当前页面，或者网址路径，或本地路径
@@ -154,5 +155,42 @@ form设置action为#表示当前页面，或者网址路径，或本地路径
 	<input type="submit" value="提交" />
 	<input type="reset"  value="重置" />
 </form>
+```
+
+# 样式学习
+
+层叠*样式表*（英文全称：Cascading Style Sheets）
+
+## 选择器
+
+### 类选择器：
+
+```html
+.自定义名{ key:value;key:value;}
+<p class='自定义名'></p>
+```
+
+### id选择器
+
+```html
+#自定义名{ key:value;key:value;}
+<p id='自定义名'></p>
+```
+
+### 标签选择器
+
+```html
+标签{ key:value;key:value;}
+这样就能直接使标签获得效果
+```
+
+### 混合选择器
+
+```html
+.name1 #name2 name3{ key:value;key:value;}
+类名为name1的标签下的id名为name2的标签下的标签名为name3的标签设置
+
+.name1 #name2 #name3{ key:value;key:value;}
+类名为name1的标签下的id名为name2的标签下的id名为name3的标签设置
 ```
 

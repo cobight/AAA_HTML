@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>表单</title>
+ </head>
+ <body>
+	<form method="get" action="#">
+		<p>用户名：<input type="text" name="username" /></p>
+		<p>密码：<input type="password" name="pwd" /></p>
+		<p>性别: <input type="radio" name="sex" value="boy"/>男
+		<input type="radio" name="sex" value="girl"/>女</p>
+		<p>婚姻: <input type="radio" name="hy" value="yes"/>是
+		<input type="radio" name="hy" value="no"/>否</p>
+		<p>爱好：<input type="checkbox" name="hobby" value="music"/>音乐
+		<input type="checkbox" name="hobby" value="reading"/>读书
+		<input type="checkbox" name="hobby" value="run"/>运动
+		</p>
+		<p>
+			地址：
+			<select name="address">
+					<option value="zz">郑州</option>
+					<option value="yz">扬州</option>
+					<option value="sh">苏杭</option>
+			</select>
+		</p>
+		<p>
+			简介：<textarea cols="50" rows="10"></textarea>
+		</p>
+		<p><input type="submit" value="fire"/><input type="reset" value="恢复value默认值"/></p>
+	</form>
+ </body>
+</html>

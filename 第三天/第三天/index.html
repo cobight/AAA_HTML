@@ -4,6 +4,12 @@
 		<meta charset="utf-8">
 		<title>注册</title>
 		<style type="text/css">
+			.tb1{
+				background-color: aqua;
+			}
+			#user td{
+				text-align: right;
+			}
 			input{
 				height: 22px;
 			}
@@ -11,8 +17,8 @@
 	</head>
 	<body>
 		<form method="get" action="#">
-			<table cellpadding="10">
-				<tr>
+			<table class="tb1" cellpadding="10">
+				<tr id="user">
 					<td>账号</td>
 					<td colspan="2"><input type="text" name="user_name" placeholder="请输入账号~"  /></td>
 				</tr>
@@ -48,3 +54,4 @@
 		</form>
 	</body>
 </html>
+
