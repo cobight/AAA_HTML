@@ -1,0 +1,90 @@
+<!DOCTYPE >
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<!-- 表单：收集信息  提交给服务器-->
+			<!-- method: 方式 ；表单的提交方式 get/post
+				get:通过地址栏提交数据：特点：最多2kb,安全性低
+				post:内部提交，（邮寄）特点：数据量没有限制，安全性高
+			-->
+			<!-- action:提交的地址，数据提交到那个页面（处理页面的路径） -->
+			<!-- #：当前页面 -->
+			<form method="get" action="success.html">
+				<table border="1" width="300">
+					<tr>
+						<!-- input：框框类的表单元素标签 -->
+						<!-- type="text"：类型：text:文本输入框 -->
+						<!-- name="username" :名字 ：自定义的名字 -->
+						<td>用户名</td><td><input readonly type="text" name="username" value="aaa"/></td>
+					</tr>
+					<tr>
+						<!-- input：框框类的表单元素标签 -->
+						<!-- type="text"：类型：text:文本输入框 -->
+						<!-- name="username" :名字 ：自定义的名字 -->
+						<td>密码</td><td>
+							<input type="text" name="pwd" placeholder="123"/>
+						</td>
+					</tr>
+					<tr>
+						<!-- type="submit"：提交按钮，可以提交整个表单 -->
+						<!-- value="提交"：值：表单元素中显示的内容 -->
+						<td>限长：<input type="text" value="" size="0" /></td><td><input type="submit" value="开炮" /></td>
+					</tr>
+				</table>
+			</form>
+			<!-- 表单元素提交的都是value值 -->
+				<form method="get" action="test1.html">
+					<!-- maxlength:最大长度：最多的字符个数 -->
+						<p>用户名:<input type="text" name="user" maxlength="5" /></p>
+						<p>隐藏字段:<input type="hidden" name="data" value="data"/></p>
+						<!-- type="file":文件字段，弹出一个文件选择的对话框 -->
+						<p><input type="file" name="file1"/></p>
+						<p>
+								<!-- checked:单 复：默认选中 -->
+							<input type="checkbox" name="hobby" value="看书"/>看书
+							<input type="checkbox" name="hobby" value="运动" checked/>运动
+							<input type="checkbox" name="hobby" value="跑步"/>跑步
+				
+						<p>
+						<!-- selected:下拉框默认选中 -->
+						<select name="">
+							<option>郑州</option>
+							<option selected>北平</option>
+							<option >金陵</option>
+						<lect>
+						</p>
+						<!-- readonly:只读 -->
+						<p><textarea readonly>协议</textarea></p>
+						<!-- disabled:禁用 -->
+						<p><input type="submit" value="提交" disabled/></p>
+						<p><input type="button" value="我是一个按钮 :然并卵" onclick="alert('hello')" disabled/></p>
+					</form>
+					
+<form method="get/post" action="#">
+	账号：<input type="text" value="内容" maxlength="5"  /><br />
+	密码：<input type="pasword" value="密码内容"/><br />
+	隐藏字段：<input type="hidden" value="" /><br />
+	邮箱：<input type="email" value="" /><br />
+	只读<input type="text" value="123" readonly  /><br />
+	submit时不能为空<input type="text" value="" required /><br />
+	input宽度限字符为11：<input type="text" value="" size="10" /><br />
+	爱好： 
+	男孩<input type="radio" name="sex" value="boy"  checked/>
+	女孩<input type="radio" name="sex" value="girl" />
+	<br />
+	兴趣：
+	听音乐<input type="checkbox" name="hobby" value="music" checked />
+	读书<input type="checkbox" name="hobby" value="read"  />
+	喝<input type="checkbox" name="hobby" value="drink" />
+	<br />
+	文件：
+	<input type="file" value="文件" accept="image/x-png" /><br />
+	功能：
+	<input type="submit" value="提交" />
+	<input type="reset"  value="重置" />
+</form>
+	</body>
+</html>

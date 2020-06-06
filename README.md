@@ -6,7 +6,7 @@
 ## 文本标签
 
 ```html
-<p>段落标签，用于显示一段内容。
+<p>段落标签，用于显示一段内容。</p>
 <b>粗体</b>
 <big>大号字</big>
 <em>着重字</em>
@@ -107,5 +107,52 @@ option标签的style属性加了text-align:center; 就会标题内容剧中。
 设置td列所占的百分比：不管在哪里，只会使最大的td的width有效，不论是百分比还是固定值，所以一列的宽度受最大的td的width值影响thead/tbody不会分割。
 rowspan占多行
 colspan占多列
+```
+
+# 输入框
+
+```html
+<input type="text" value="显示内容" placeholder="提示内容"/>
+<textarea cols="200" rows="10" readonly>输入框,一行200个字符，高度显示10行内容，多余的出现滚动条</textarea>
+```
+
+# 选择框
+
+```html
+下拉选择框
+<select>
+    <option>郑州</option>
+    <option>南阳</option>
+    <option>洛阳</option>
+</select>
+```
+
+# 表单
+
+```html
+form设置action为#表示当前页面，或者网址路径，或本地路径
+<form method="get/post" action="#">
+	账号：<input type="text" value="内容" maxlength="5"  /><br />
+	密码：<input type="pasword" value="密码内容"/><br />
+	隐藏字段：<input type="hidden" value="" /><br />
+	邮箱：<input type="email" value="" /><br />
+	只读<input type="text" value="123" readonly  /><br />
+	submit时不能为空<input type="text" value="" required /><br />
+	input宽度限字符为11：<input type="text" value="" size="10" /><br />
+	爱好： 
+	男孩<input type="radio" name="sex" value="boy"  checked/>
+	女孩<input type="radio" name="sex" value="girl" />
+	<br />
+	兴趣：
+	听音乐<input type="checkbox" name="hobby" value="music" checked />
+	读书<input type="checkbox" name="hobby" value="read"  />
+	喝<input type="checkbox" name="hobby" value="drink" />
+	<br />
+	文件：
+	<input type="file" value="文件" accept="image/x-png" /><br />
+	功能：
+	<input type="submit" value="提交" />
+	<input type="reset"  value="重置" />
+</form>
 ```
 
