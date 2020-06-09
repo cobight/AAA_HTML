@@ -288,5 +288,206 @@ dotted单虚线
 
 ## 特点
 
-元素在水平方向上靠左或靠右
+1、元素在水平方向上靠左或靠右。
+
+2、行内元素浮动会变成块状，块状元素浮动会失去独占一行的特征。
+
+3、一旦元素浮动，后续的元素会受到浮动效果的影响。
+
+## 浮动塌陷
+
+如果是在没有设置高度的容器内的元素浮动，导致容器浮动塌陷为0
+
+## 如何消除浮动（浮动塌陷）带来的影响
+
+1、在浮动元素后面添加一个块状标签（div），添加清除浮动的属性
+
+```html
+.clear{
+	/* 清除浮动:left | right | both */
+	clear:left;
+}
+```
+
+2、在父容器设置overflow属性，溢出属性通过设置，能解决对应问题
+
+
+
+```
+overflow：超出、溢出；作用：如何去处理超出容器范围的部分
+```
+
+```html
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#d1 {
+				border: 1px solid red;
+                /* 控制子元素如果超出父容器的范围如何去处理 
+				auto: 自动
+				hidden:超出部分隐藏
+				scroll:总是显示滚动条
+				*/
+				overflow: auto;
+			}
+
+			#d1 a {
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1">
+			<a href="#">新闻1</a>
+			<a href="#">新闻2</a>
+			<a href="#">新闻3</a>
+			<a href="#">新闻4</a>
+			<a href="#">新闻5</a>
+			<a href="#">新闻1</a>
+			<a href="#">新闻2</a>
+			<a href="#">新闻3</a>
+			<a href="#">新闻4</a>
+			<a href="#">新闻5</a>
+			<a href="#">新闻1</a>
+			<a href="#">新闻2</a>
+			<a href="#">新闻3</a>
+			<a href="#">新闻4</a>
+			<a href="#">新闻5</a>
+
+		</div>
+		<img src="img/11.jpg"/>
+		
+	</body>
+</html>
+```
+
+栗子：
+
+```html
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>新乡旅游网</title>
+		<style>
+			body {
+				margin: 0px;
+				padding: 0px;
+			}
+
+			.container {
+				width: 1024px;
+				border: 1px solid black;
+				margin: 0px auto;
+			}
+
+			.center {
+				overflow: auto;
+				height: 400px;
+			}
+
+			/* 在使用浮动时,如果内容超出容器范围会换到下一行 */
+			.center .left1 {
+				float: left;
+				background-color: #FAEBD7;
+				width: 20%;
+				height: 100%;
+				/* border:1px solid blue; */
+			}
+
+			.center .center1 {
+				float: left;
+				background-color: aliceblue;
+				width: 60%;
+				height: 100%;
+			}
+
+			.center .right1 {
+				float: left;
+				background-color: #FAEBD7;
+				width: 20%;
+				height: 100%;
+			}
+
+			.top {
+				background-color: beige;
+				height: 100px;
+				border: 1px solid black;
+			}
+
+			.top img {
+				width: 100%;
+				height: 50%;
+			}
+
+			.bottom {
+				background-color: #F5F5DC;
+				height: 100px;
+			}
+
+			/* 一般使用无序列表：将margin,padding:0 */
+			.menu {
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+				/* border: 1px solid red; */
+				overflow: auto;
+			}
+
+			.menu li {
+				float: left
+			}
+
+			.menu li a {
+				display: block;
+				width: 90px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				background-color: cadetblue;
+				margin-left:8px;
+			}
+			
+			.menu li a:hover{
+				background-color: #F0F8FF;
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="top">
+				<img src="img/01.jpg" />
+				<ul class="menu">
+					<li><a href="#">首页1</a></li>
+					<li><a href="#">首页2</a></li>
+					<li><a href="#">首页3</a></li>
+					<li><a href="#">首页4</a></li>
+					<li><a href="#">首页5</a></li>
+					<li><a href="#">首页6</a></li>
+					<li><a href="#">首页7</a></li>
+					<li><a href="#">首页8</a></li>
+					<li><a href="#">首页9</a></li>
+					<li><a href="#">首页10</a></li>
+				</ul>
+			</div>
+			<div class="center">
+				<div class="left1">
+					左
+				</div>
+				<div class="center1">
+					中
+				</div>
+				<div class="right1">
+					右
+				</div>
+			</div>
+			<div class="bottom">
+				下
+			</div>
+		</div>
+	</body>
+</html>
+```
 
