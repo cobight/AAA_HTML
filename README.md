@@ -161,7 +161,7 @@ form设置action为#表示当前页面，或者网址路径，或本地路径
 
 层叠*样式表*（英文全称：Cascading Style Sheets）
 
-## 选择器
+## 样式选择器种类
 
 ### 类选择器：
 
@@ -184,7 +184,15 @@ form设置action为#表示当前页面，或者网址路径，或本地路径
 这样就能直接使标签获得效果
 ```
 
-### 混合选择器
+### 组合选择器
+
+```html
+.name1,#name2,p,a{ key:value;key:value;}
+```
+
+
+
+### 子代选择器
 
 ```html
 .name1 #name2 name3{ key:value;key:value;}
@@ -192,5 +200,93 @@ form设置action为#表示当前页面，或者网址路径，或本地路径
 
 .name1 #name2 #name3{ key:value;key:value;}
 类名为name1的标签下的id名为name2的标签下的id名为name3的标签设置
+
+.name1>#name2>a{ key:value;key:value;}
+子代选择器
 ```
+
+### 伪类选择器
+
+```html
+选择器:动作
+.p:hover{...}
+#p:hover{...}
+p:hover{...}
+例子：
+a:link {color: #FF0000}		/* 未访问的链接 */
+a:visited {color: #00FF00}	/* 已访问的链接 */
+a:hover {color: #FF00FF}	/* 鼠标移动到链接上 */
+a:active {color: #0000FF}	/* 选定的链接 */
+```
+
+
+
+## 样式选择器的使用
+
+### 行内样式
+
+```html
+在标签中直接添加属性来达到效果
+<p style="font-size:20px;">
+	文字
+</p>
+```
+
+### 内部样式
+
+```html
+html文件中通过head部分添加样式
+<style>
+    p{
+        background-color: #00FFFF;
+    }
+</style>
+```
+
+### 外部样式
+
+```html
+通过在html的head部分添加链接，引入css文件，加载样式
+<link rel="stylesheet" type="text/css" href="css/css.css" />
+```
+
+# 位置调控
+
+## margin：标签的外部距离
+
+```html
+margin:10px; /* 四周都是10px */
+margin:10px 15px; /* 上下为10距离，左右为15距离 */
+margin：5px 10px 15px; /* 距上5px，左右距离为10px，距下15px */
+margin：5 10 15 20;  /* 分别是上右下左，单位px */
+
+元素居中：
+宽度不为100%
+使用margin：0 auto
+```
+
+### padding：标签的内部距离
+
+```html
+padding:10px; /* 内部距离四周都是10px */
+padding:10px 15px; /* 内部距离上下为10距离，左右为15距离 */
+padding：5px 10px 15px; /* 内部距离距上5px，左右距离为10px，距下15px */
+padding：5 10 15 20;  /* 内部距离分别是上右下左，单位px */
+```
+
+# 边框
+
+border边框
+
+```html
+border="1px solid red"
+solid单实线
+dotted单虚线
+```
+
+# 浮动
+
+## 特点
+
+元素在水平方向上靠左或靠右
 

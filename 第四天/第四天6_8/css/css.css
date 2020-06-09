@@ -1,0 +1,53 @@
+/* p{
+	font-family: "微软雅黑";
+	font-size: 20px;
+	
+	color: #00FFFF;
+	
+} */
+.pp{
+	height: 162px;
+	text-align: left;
+	background-image: url(../img/freedom.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: 200px 200px;
+}
+table{
+	width: 300px;
+	height: 300px;
+	text-align: center;
+	background-image: url(../img/02.jpg);
+}
+td{
+	background-image: url(../img/01.jpg);
+	background-repeat: no-repeat;
+	background-position: 100px 100px;
+}
+#td1:hover{
+	background-position: left top;
+}
+#td2:hover{
+	background-position: center top;
+}
+#td3:hover{
+	background-position: right top;
+}
+#td4:hover{
+	background-position: left center;
+}
+#td5:hover{
+	background-position: center center;
+}
+#td6:hover{
+	background-position: right center;
+}
+#td7:hover{
+	background-position: left bottom;
+}
+#td8:hover{
+	background-position: center bottom;
+}
+#td9:hover{
+	background-position: right bottom;
+}
