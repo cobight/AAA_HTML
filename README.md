@@ -491,3 +491,38 @@ overflow：超出、溢出；作用：如何去处理超出容器范围的部分
 </html>
 ```
 
+# 定位
+
+## 绝对定位
+
+```html
+绝对定位的元素的位置相对于最近的已定位祖先元素，如果元素没有已定位的祖先元素，那么它的位置相对于最初的包含块body。
+position:absolute;
+你甚至可以在html页面用1000个div拼出一幅画。
+
+如果需要设定父位置,在父框架内设定位置，那就把父标签的position:relative
+```
+
+## 相对定位
+
+```html
+在使用相对定位时，无论是否进行移动，元素仍然占据原来的空间。因此，移动元素会导致它覆盖其它框。
+position:relative;
+相对于原来的位置进行移动，但是还占用原来位置，会导致原来位置是一片空白，其他元素却被覆盖。
+left:10px;       ==     right:-10px
+top:10px;        ==     bottom:-10px
+```
+
+
+
+# 伪类选择器的功能
+
+## hover
+
+```html
+#name:hover 子代tag/.name{k:v}全影响
+tag:hover 子代tag/.name{k:v}全影响
+.name:hover 子代tag/.name{k:v}单影响
+
+```
+

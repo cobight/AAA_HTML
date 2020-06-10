@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+<style>
+.header-bar-search {
+    width: 300px;
+    height: 50px;
+    font-size: 16px;
+    margin-top: 100px;
+    margin-left: 40%;
+}
+.header-bar-search input{
+    display: inline-block;
+    height: 50px;
+    outline: 0;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    transition: border-color .3s linear,color .3s linear,background-color .3s linear;
+}
+.header-bar-search .searchIput1 {
+    width: 250px;
+    padding: 0 10px;
+    border-right: none;
+}
+.header-bar-search .searchIput2 {
+    float: right;
+    width: 50px;
+    font-size: 20px;
+	display: none;
+}
+.searchIput1:hover{
+    border-color: #ff6700;
+}
+.searchIput2:hover{
+	
+    color: #fff;
+    background: #ff6700;
+}
+.searchIput1:hover + .searchIput2{
+    border-color: black;
+	display: block;
+}
+</style>
+<div class="header-bar-search">
+    <h3>tps:请将鼠标悬浮至搜索框和按钮上</h3>
+    <form action="">
+        <input type="text" class="searchIput1">
+        <input type="submit" value="🔍" class="searchIput2">
+    </form>
+</div>
+</body>
+</html>

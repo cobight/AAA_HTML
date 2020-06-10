@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.light{
+				position: absolute;
+				top:0px;
+				width: 10%;
+				height: 100px;
+				background-color: #FF0000;
+				display: none;
+				text-align: center;
+			}
+			.lf{
+				left:50px;
+			}
+			.rg{
+				right: 50px;
+			}
+			.text{
+				width: 10%;
+				margin: 0 auto;
+				text-align: center;
+			}
+			.father{
+				position: relative;
+				position: re;
+				margin: 0px;
+				padding: 0px;
+				overflow: auto;
+				height: 100px;
+				width: 100%;
+				background-color: #8A2BE2;
+			}
+			div:hover .light{
+				display:block;
+			}
+			#div2:hover span{
+				display: block;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="div1" class="father">
+			<span class="light lf">L</span>
+			<div class="text">一行文字</div>
+			<span class="light rg">R</span>
+		</div>
+		<div id="div2" class="father">
+			<span class="light lf">L</span>
+			<div class="text">一行文字</div>
+			<span class="light rg">R</span>
+		</div>
+	</body>
+</html>

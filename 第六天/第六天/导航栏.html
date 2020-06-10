@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.father{
+				position: relative;
+				height: 20px;
+			}
+			li{
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+			}
+			.mainmenu>li{
+				width: 23%;
+				text-align: center;
+				margin: 0px 10px;
+				background-color: #5EA6EB;
+				float: left;
+			}
+			.mainmenu>li:hover ul{
+				position: absolute;
+				margin: 0px;
+				padding: 0px;
+				width: 22.5%;
+				text-align: left;
+				display: block;
+			}
+			.mainmenu>li>ul{
+				display: none;
+			}
+			.mainmenu>li>ul>li{
+				height: 50px;
+				width: 100%;
+				background-color: aquamarine;
+			}
+			.foot{
+				height: 50px;
+				width: 100%;
+				background-color: #00FFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="father">
+			<ul class="mainmenu">
+				<li>春
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+				</li>
+				<li>夏
+					<ul>
+						<li>4</li>
+						<li>5</li>
+						<li>6</li>
+						
+					</ul>
+				</li>
+				<li>秋
+					<ul>
+						<li>7</li>
+						<li>8</li>
+						<li>9</li>
+					</ul>
+				</li>
+				<li>冬
+					<ul>
+						<li>10</li>
+						<li>11</li>
+						<li>12</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="foot"></div>
+	</body>
+</html>
