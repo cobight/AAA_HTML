@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.top{
+				width: 80%;
+			}
+			.menu,.menu>li>ul{
+				background-color: aqua;
+				width: 100%;
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+			}
+			.menu{
+				position: relative;
+			}
+			.lf{
+				display: none;
+				position: absolute;
+				border: 10px black solid;
+				border-left: 10px red solid;
+				top: 0px;
+				left: 0px;
+			}
+			.rt{
+				position: absolute;
+				display: none;
+				border: 10px black solid;
+				border-right: 10px red solid;
+				top: 0px;
+				right: 0px;
+			}
+			.menu>li{
+				float: left;
+				width: 20%;
+				text-align: center;
+				background-color: aliceblue;
+			}
+			.menu>li>ul{
+				position: absolute;
+				
+				display: none;
+			}
+			.menu>li:hover ul{
+				width: 100%;
+				position: relative;
+				display: block;
+			}
+			.menu>li:hover ul>li{
+				position: relative;
+				height: 30px;
+			}
+			.menu>li:hover ul>li>span{/* 
+				position: relative; */
+				display: block;
+			}
+			a:hover span{
+				/* position: absolute; */
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="top">
+			<ul class="menu">
+				<li>金
+					<ul>
+						<li><a><span class="lf"></span>金1<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>金2<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>金3<span class="rt"></span></a></li>
+					</ul>
+				</li>
+				<li>木
+					<ul>
+						<li><a><span class="lf"></span>木1<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>木2<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>木3<span class="rt"></span></a></li>
+					</ul>
+				</li>
+				<li>水
+					<ul>
+						<li><a><span class="lf"></span>水1<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>水2<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>水3<span class="rt"></span></a></li>
+					</ul>
+				</li>
+				<li>火
+					<ul>
+						<li><a><span class="lf"></span>火1<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>火2<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>火3<span class="rt"></span></a></li>
+					</ul>
+				</li>
+				<li>土
+					<ul>
+						<li><a><span class="lf"></span>土1<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>土2<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>土3<span class="rt"></span></a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

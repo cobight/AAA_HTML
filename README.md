@@ -526,3 +526,199 @@ tag:hover 子代tag/.name{k:v}全影响
 
 ```
 
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.top{
+				width: 80%;
+			}
+			.menu,.menu>li>ul{
+				background-color: aqua;
+				width: 100%;
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+			}
+			.menu{
+				position: relative;
+			}
+			.lf{
+				display: none;
+				position: absolute;
+				border: 10px black solid;
+				border-left: 10px red solid;
+				top: 0px;
+				left: 0px;
+			}
+			.rt{
+				position: absolute;
+				display: none;
+				border: 10px black solid;
+				border-right: 10px red solid;
+				top: 0px;
+				right: 0px;
+			}
+			.menu>li{
+				float: left;
+				width: 20%;
+				text-align: center;
+				background-color: aliceblue;
+			}
+			.menu>li>ul{
+				position: absolute;
+				
+				display: none;
+			}
+			.menu>li:hover ul{
+				width: 100%;
+				position: relative;
+				display: block;
+			}
+			.menu>li:hover ul>li{
+				position: relative;
+				height: 30px;
+			}
+			.menu>li:hover ul>li>span{/* 
+				position: relative; */
+				display: block;
+			}
+			a:hover span{
+				/* position: absolute; */
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="top">
+			<ul class="menu">
+				<li>金
+					<ul>
+						<li><a><span class="lf"></span>金1<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>金2<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>金3<span class="rt"></span></a></li>
+					</ul>
+				</li>
+				<li>木
+					<ul>
+						<li><a><span class="lf"></span>木1<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>木2<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>木3<span class="rt"></span></a></li>
+					</ul>
+				</li>
+				<li>水
+					<ul>
+						<li><a><span class="lf"></span>水1<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>水2<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>水3<span class="rt"></span></a></li>
+					</ul>
+				</li>
+				<li>火
+					<ul>
+						<li><a><span class="lf"></span>火1<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>火2<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>火3<span class="rt"></span></a></li>
+					</ul>
+				</li>
+				<li>土
+					<ul>
+						<li><a><span class="lf"></span>土1<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>土2<span class="rt"></span></a></li>
+						<li><a><span class="lf"></span>土3<span class="rt"></span></a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
+
+```
+
+# 脚本学习
+
+javascript
+
+## 构成
+
+1、ECMAScript:语法标准：变量、数据类型、分支语句、循环、数组、对象、函数
+
+2、BOM:浏览器对象模型：js操控浏览器的（一系列对象）
+
+3、DOM:文档对象模型：用来操控HTML/XML文件中的各种文档元素（一系列对象）
+
+## 变量的定义
+
+```javascript
+var name;
+var age = 18;
+变量的命名规则：
+
+1、使用$ 、字母、数字 或者 下划线来命名
+
+2、首字母：只能是字母或者是$或者是下划线
+
+3、不能使用关键字、保留字...
+
+4、区分大小写
+
+命名规则：
+
+	1、驼峰命名法：小驼峰（变量）、大驼峰（模拟类）
+```
+
+## 数据类型
+
+- number: 数字（ 整数 、小数 ）
+- string:字符串，用引号（单，双）引起来的：字符串
+- boolean:布尔类型：true/false
+- null: 空引用，空地址，不存在的地址，对象的默认值
+- undefined: 未定义；声明了变量没有赋值，默认存的的是：undefined
+
+## 注释
+
+单行注释：//
+
+多行注释: /* 内容  */
+
+## 输出语句
+
+document.write("0.0");
+
+## 运算
+
++= -= *= /= %=
+
+优先级：* / % > + - 
+
+## 关系运算符
+
+```javascript
+> 大于 < 小于  >= <= ==  !=不等
+```
+
+​	关系运算返回的: true/false
+
+## 逻辑运算符
+
+当有多个条件需要进行组合的时候就要使用逻辑运算符
+
+- 与：并且 ：&& 解释：当多个条件同时满足时使用，只要有一个false，最终的结果是:false
+
+- 或：|| 解释：只需要满足其一的时候使用，只要有一个true，最终的结果是：true
+
+- 非：! 解释：相反的条件 ;非真即假，非假即真;
+
+  优先级：
+
+  非 > 与 >或
+
+() > 算术运算符 > 关系运算符> 逻辑运算符  > 赋值
+
+## 类型转换
+
+- parseInt("字符串") ：将字符串转换成整型
+- parseFloat("字符串")：将字符串转换成浮点型 （小数）
+- Number(object) : 将任意类型转换成数字
