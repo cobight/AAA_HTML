@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var time = prompt("请输入年月", "2020-6");
+			var year = time.split("-")[0] * 1;
+			var month = time.split("-")[1] * 1;
+			
+			if (month<1 || month >12){
+				console.log("输入范围超标！");
+			}else{
+				days = 31;
+				switch(month){
+					case 4:
+					case 6:
+					case 9:
+					case 11:
+						days = 30;
+						break;
+					case 2:
+						if(year%400==0||(year%4==0&&year%100!=0)){
+							days=29;
+						}else{
+							days=28;
+						}
+						break;
+				}
+				console.log("今月天数："+days);
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

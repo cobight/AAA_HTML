@@ -722,3 +722,40 @@ document.write("0.0");
 - parseInt("字符串") ：将字符串转换成整型
 - parseFloat("字符串")：将字符串转换成浮点型 （小数）
 - Number(object) : 将任意类型转换成数字
+
+```javascript
+<script>
+    var inputmsg = prompt("标题栏", 2);
+	console.log("输入的inputmsg类型是："+typeof inputmsg);
+    inputmsg = inputmsg * 1;
+    console.log("乘以1后inputmsg类型是："+typeof inputmsg);
+    if (typeof inputmsg == "string"){
+    console.log("string");
+    }else if(typeof inputmsg == "number"){
+    console.log("number");
+    }
+    var outmsg = "" + inputmsg;
+    console.log("最后类型变为："+typeof outmsg);
+</script>
+```
+
+```javascript
+// 第一题：输入三个数字：三条边，判断能不能构成三角形？
+// var Triangle = prompt("请输入三个数字，用空格隔开：");
+// var length = Triangle.split(" ");
+// if (length[0] * 1 + length[1] * 1 > length[2] && length[0] * 1 + length[2] * 1 > length[1] && length[1]*1 + length[2] * 1 > length[0] * 1){
+// 	console.log("是三角形！");
+// }else{
+// 	console.log("不是三角形！");
+// }
+//第二题：输入一个三位的数字，倒着输出；比如：256 ； 输出：652
+// var numbers = prompt("请输入三位数字：", 654) * 1;
+// a = Math.floor(numbers / 100), b = Math.floor(numbers / 10 % 10), c = numbers % 10;
+// console.log(''+c+b+a);
+//第三题：输入一个三位数字判断是不是水仙花数
+// var numbers = prompt("请输入三位数字：", 153) * 1;
+// a = Math.floor(numbers / 100), b = Math.floor(numbers / 10 % 10), c = numbers % 10;
+// if (Math.pow(a,3)+Math.pow(b,3)+Math.pow(c,3) == numbers){
+// 	console.log(numbers+":是水仙花!");
+```
+
