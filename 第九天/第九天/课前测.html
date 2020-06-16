@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var msg = prompt("请输入年月：","2020 2");
+			var year = msg.split(" ")[0];
+			var month = msg.split(" ")[1];
+			if (month < 1 || month > 12){
+				console.error("输入错误");
+			}else{
+				var days = 31;
+				switch(month * 1){
+					case 4:
+					case 6:
+					case 9:
+					case 11:
+					days = 30;
+						break;
+					case 2:
+						if(year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)){
+							days = 29;
+						}else{
+							days = 28;
+						}
+						break;
+				}
+				console.log(year + "年" + month + "月有" + days + "天");
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

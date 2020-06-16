@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			//Triangle三角形
+			
+			//di=5/3行
+			//di=7/4行
+			//var di = prompt("请输入任意奇数：",7)*1;
+			//h*2+1==di;
+			//h==(di-1)/2;
+			// for(var h = 0;h<=(di-1)/2;h++){//1-4
+			// 	for(var s = di/2-1;s>=h;s--){//0-3
+			// 		document.write("&nbsp;&nbsp;");
+			// 	}
+			// 	for(var x = 1;x<=h*2+1;x++){
+			// 		document.write("*");
+			// 	} 
+			// 	document.write("<br />");
+			// }
+			//外for从2开始到0结束，共写三行
+			//内for从2开始，到外for变量结束，
+			//	内2，外2，输出一个空格
+			//	内2，外1，输出两个空格
+			//	内2，外0，输出三个空格
+			// for(var h = (di-1)/2-1;h>=0;h--){//2-0
+			// 	for(var s = di/2-1;s>=h;s--){//2-0
+			// 		document.write("&nbsp;");
+			// 	}
+			// 	for(var x = 1;x<=h*2+1;x++){
+			// 		document.write("*");
+			// 	}
+			// 	document.write("<br />");
+			// }
+			
+
+	//   *
+	//  ***
+	// *****
+ //   *******
+			var line = prompt("输入行数：",5)*1;
+			for(var x=0;x<line;x++){
+				for(var s = line - x-1;s>0;s--){
+					document.write("&nbsp;");
+				}
+				for(var y = 0;y<=x*2;y++){
+					document.write("*");
+				}
+				document.write("<br/>");
+			}
+			for(var x=0;x<line-1;x++){
+				for(var s = 0;s<=x;s++){
+					document.write("&nbsp;");
+				}
+				for(var y=2*(line-x-2);y>=0;y--){
+					document.write("*");
+				}
+				document.write("<br/>");
+			}
+			 
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

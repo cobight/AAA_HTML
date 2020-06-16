@@ -759,3 +759,126 @@ document.write("0.0");
 // 	console.log(numbers+":是水仙花!");
 ```
 
+## 循环
+
+### while循环
+
+```html
+while(表达式){
+	dosomething;
+}
+```
+
+### do...while循环
+
+```html
+do{
+	dosomething;
+}while(表达式);
+```
+
+### for循环
+
+```
+for (条件初始化;条件表达式;条件迭代){
+	dosomething;
+}
+```
+
+## break与continue
+
+break跳出循环语句。
+
+continue跳过本次循环，开始下次循环。
+
+# 脚本调试
+
+通过开发者工具，我们可以可以进入调试模式，Sources功能区是调试得主要界面。
+
+## 调试流程
+
+选择断点，刷新网页，进入断点。
+
+通过点击跨越F10或者下一步F11进行断点测试。
+
+## 变量监视
+
+调试界面右侧得Watch中，点击加号，输入变量名来监视变量得值。
+
+# js得object数据类型
+
+## 列表
+
+```javascript
+var lis = [1,2,3];
+console.log(typeof lis);
+for(var i in lis){
+    console.log(i);
+}
+```
+
+## 字典
+
+key是string字符串
+
+```javascript
+var dic = {"a":"b"};
+console.log(typeof dic);
+for(var i in dic){
+	console.log(i+dic[i]);
+}
+var dic = {1:2};
+console.log(typeof dic);
+for(var i in dic){
+    console.log(typeof i+typeof dic[i])
+    console.log(i*1+dic[i]);
+}
+```
+
+# 操作框
+
+## prompt输入框
+
+参数一提示文本，参数二默认值（文本）
+
+返回string
+
+## confirm确认框
+
+参数一提示文本
+
+返回确定是true，返回时false
+
+# 超时与定时
+
+### setTimeout超时单次执行
+
+### setInterval定时循环执行
+
+### clearsetTimeout清除
+
+### clearsetInterval清除
+
+# window对象
+
+## window.location
+
+```js
+window.location.href="http://跳转的网址";
+
+window.reload();//页面刷新
+```
+
+# history对象
+
+使用前提，操作过后退，可用前进；操作过前进，可用后退
+
+### forward前进
+
+#### back后退
+
+### go()
+
+参数1，2，3，就是forward
+
+参数-1，-2，-3，就是back

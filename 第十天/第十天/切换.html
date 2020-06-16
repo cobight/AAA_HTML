@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<select id="sele">
+			<option value="春" selected>春</option>
+			<option value="夏">夏</option>
+			<option value="秋">秋</option>
+			<option value="冬">冬</option>
+		</select>
+		<div id="c" style="height: 100px;width: 100%;background-color: red;">
+			
+		</div>
+		<div id="x" style="display: none;height: 100px;width: 100%;background-color: yellow;">
+			
+		</div>
+		<div id="q" style="display: none;height: 100px;width: 100%;background-color: blue;">
+			
+		</div>
+		<div id="d" style="display: none;height: 100px;width: 100%;background-color: green;">
+			
+		</div>
+		<input id="prnt" type="text" value="春" />
+		<script type="text/javascript">
+			
+			var selec = document.getElementById("sele");
+			selec.onchange = function(){
+				console.log(selec.value);
+				document.getElementById("prnt").value=selec.value;
+				if(selec.value=="春"){
+					document.getElementById("c").style.display='block';
+					document.getElementById("x").style.display='none';
+					document.getElementById("q").style.display='none';
+					document.getElementById("d").style.display='none';
+				}else if(selec.value=="夏"){
+					document.getElementById("c").style.display='none';
+					document.getElementById("x").style.display='block';
+					document.getElementById("q").style.display='none';
+					document.getElementById("d").style.display='none';
+				}else if(selec.value=="秋"){
+					document.getElementById("c").style.display='none';
+					document.getElementById("x").style.display='none';
+					document.getElementById("q").style.display='block';
+					document.getElementById("d").style.display='none';
+				}else if(selec.value=="冬"){
+					document.getElementById("c").style.display='none';
+					document.getElementById("x").style.display='none';
+					document.getElementById("q").style.display='none';
+					document.getElementById("d").style.display='block';
+				}
+				
+			}
+		</script>
+	</body>
+</html>

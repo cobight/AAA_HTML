@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 			//1、判断101-200之间有多少个素数，并输出所有素数。
+			// ​			//素数又叫质数，就是除了1和它本身之外，再也没有整数能被它整除的数。也就是素数只有两个因子。
+			// for(var index = 101;index <= 200;index++){
+			// 	var issushu = true;
+			// 	for(var item = 2;item < index/2+1;item++){
+			// 		if(index % item == 0){
+			// 			issushu = false;
+			// 			break;
+			// 		}
+			// 	}
+			// 	if(issushu){
+			// 		document.write(index+"是素数<br />");
+			// 	}
+			// }
+			//2、通过for循环实现百钱买百鸡的题:
+			//公鸡5元每只，母鸡3元每只，小鸡3只1元，100元买一百只鸡多少种办法？
+			// for(var Rooster = 0; Rooster < 100 / 5; Rooster++) {
+			// 	for(var Hens = 0; Hens < 100 - Rooster; Hens++) {
+			// 		var ch = 100 - Rooster - Hens;
+			// 		if (ch/3 + Rooster*5 + Hens*3 == 100) {
+			// 			document.write("公鸡：" + Rooster +
+			// 						"只,母鸡：" + Hens +
+			// 						"只,小鸡：" + ch +
+			// 						"只<br />");
+			// 		}
+			// 	}
+			// }
+			//x+y+z=100
+			//5x+3y+z/3=100
+			//15x+9y+z=300
+			//14x+8y=200
+			//7x+4y=100
+			//x
+			//y=(200-14x)/8
+			//z=
+			for(var Rooster = 0; Rooster < 100 / 5; Rooster++) {
+				var Hens = (100 - 7 * Rooster) / 4;
+				var ch = 100 - Rooster - Hens;
+				if(Hens >=0  && ch % 1 ==0){
+					console.log(Rooster,Hens,ch);
+				} 
+			}
+			  
+			//x+y+z=100
+			//5x+3y+z/3=100
+			//15x+9y+z=300
+			//
+			//z=100-x-y
+			//9z=900-9x-9y
+			//z=300-15x-9y
+			//8z=600+6x
+			//z
+			//x=(8z-600)/6
+			//y=100-x-z
+			for(var z=0;z<=100*3;z++){ 
+				var x=(8*z-600)/6;
+				var y=100-x-z;
+				if(5*x+3*y+z==100 && x>=0 && x%1==0&& y>=0&& y%1==0){
+					console.log(x,y,z);
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

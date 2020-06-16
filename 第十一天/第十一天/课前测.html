@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			function sums(fh){
+				console.log(fh);
+				var sum = document.getElementById("sum1");
+				var a = document.getElementById("num1").value *1;
+				var b = document.getElementById("num2").value *1;
+				switch(fh){
+					case '+':
+						sum.value = a+b;
+						break;
+					case '-':
+						sum.value = a-b;
+						break;
+					case '*':
+						sum.value = a*b;
+						break;
+					case '/':
+						sum.value = a/b;
+						break;
+				}
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<input id="num1" />
+		<input id="num2" />
+		<input type="button" value="+" onclick="sums('+')" />
+		<input type="button" value="-" onclick="sums('-')" />
+		<input type="button" value="x" onclick="sums('*')" />
+		<input type="button" value="/" onclick="sums('/')" />
+		<input id="sum1" />
+		
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript">
+			function btnclick(){
+				console.log('按钮2被点击了');
+			}
+		</script>
+	</head>
+	<body>
+		<!-- 代码块在标签里 												双引号里用单引号 -->
+		<input id="name1" type="button" value="按钮1" onclick="console.log('按钮1被点击了');" />
+		<!-- btnclick方法绑定标签点击事件 -->
+		<input id="name2" type="button" value="按钮2" onclick="btnclick();" />
+		<!-- 事件与方法在脚本里绑定 -->
+		<input id="name3" type="button" value="按钮3" />
+		<script type="text/javascript">
+			// 获取标签
+			var btn3 = document.getElementById("name3");
+			//绑定按钮标签的点击事件onclick对应的方法
+			btn3.onclick = function(){
+				console.log(btn3.outerHTML);
+				console.log("按钮3被点击了");
+			}
+		</script>
+	</body>
+</html>

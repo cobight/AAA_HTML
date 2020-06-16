@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		省份：<input onchange="change();" type="text" id="sheng" /><br />
+		城市：<input onchange="change();" type="text" id="shi" /><br />
+		区片：<input onchange="change();" type="text" id="qu" /><br />
+		社区：<input onchange="change();" type="text" id="shequ" /><br />
+		家庭住址：<p id="result"></p>
+		<script type="text/javascript">
+			function change(){
+				var sheng = document.getElementById("sheng").value;
+				var shi = document.getElementById("shi").value;
+				var qu = document.getElementById("qu").value;
+				var shequ = document.getElementById("shequ").value;
+				document.getElementById("result").innerHTML = sheng+shi+qu+shequ;
+			}
+		</script>
+		性别：
+		<select id="sexs" onchange="changes();">
+			<option value="女">女</option>
+			<option value="男" selected>男</option>
+		</select>
+		<br />
+		<p id="sex"></p>
+		<script type="text/javascript">
+			function changes(){
+				document.getElementById("sex").innerHTML = document.getElementById("sexs").value;
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<img height="900px" id="img" src=""  />
+		<script type="text/javascript">
+			var arr = [
+				"https://img.souutu.com/2020/0608/20200608024857814.jpg",
+				"https://img.souutu.com/2020/0608/20200608024857842.jpg",
+				"https://img.souutu.com/2020/0608/20200608024857782.jpg",
+				"https://img.souutu.com/2020/0608/20200608024858166.jpg",
+				"https://img.souutu.com/2020/0608/20200608024858350.jpg",
+				"https://img.souutu.com/2020/0608/20200608024858247.jpg",
+				"https://img.souutu.com/2020/0605/20200605103428852.jpg",
+				"https://img.souutu.com/2020/0601/20200601100733162.jpg",
+				"https://img.souutu.com/2020/0601/20200601100733376.jpg",
+				"https://img.souutu.com/2020/0601/20200601100733603.jpg",
+				"https://img.souutu.com/2020/0601/20200601100733809.jpg",
+				"https://img.souutu.com/2020/0601/20200601100733350.jpg",
+				"https://img.souutu.com/2020/0601/20200601100733590.jpg",
+				"https://img.souutu.com/2020/0601/20200601100734581.jpg",
+				"https://s3m4.nzwgs.com/galileo/e691ec4e9651a3cdde4ab867625e1fea-rs_middle.gif_.webp"
+			];
+			//console.log(arr[0]);
+			//
+			var n = 0;
+			function lun(){
+				document.getElementById("img").src = arr[n++];
+				if(n == arr.length){
+					n = 0;
+				}
+				setTimeout("lun()", 1000);
+			}
+			setTimeout("lun()", 1000);
+		</script>
+	</body>
+</html>
