@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a = 1,
+				b = 2;
+
+			function func1(值1, 值2) {
+				console.log("被调用了", 值1, 值2);
+				console.log(值1 + 值1)
+			}
+
+			function text(x,y,hanshu) {
+				console.log(typeof x);
+				console.log(typeof y);
+				console.log(typeof hanshu);
+				hanshu(a, b);
+			} 
+			text(1,"1",func1); 
+		</script>
+	</body> 
+</html>

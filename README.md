@@ -882,3 +882,127 @@ window.reload();//页面刷新
 参数1，2，3，就是forward
 
 参数-1，-2，-3，就是back
+
+# 数组
+
+## 定义的方法
+
+```javascript
+var arr1 = [];//定义空数组
+var arr2 = [1,2,3];//定义并初始化数组
+var arr3 = new Array();//定义数组
+var arr4 = new Array(100);//定义数组，开辟空间100个元素位置
+var arr5 = new Array(1,2,3);//定义数组，初始化内容，没设定空间
+arr4[0]=123;//开辟好的空间可以直接写值
+```
+
+## 增删改查
+
+| 方法                                                         | 描述                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [concat()](http://www.w3school.com.cn/jsref/jsref_concat_array.asp) | 连接两个或更多的数组，并返回结果。                           |
+| [join()](http://www.w3school.com.cn/jsref/jsref_join.asp)    | 把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。 |
+| [pop()](http://www.w3school.com.cn/jsref/jsref_pop.asp)      | 删除并返回数组的最后一个元素                                 |
+| [push()](http://www.w3school.com.cn/jsref/jsref_push.asp)    | 向数组的末尾添加一个或更多元素，并返回新的长度。             |
+| [reverse()](http://www.w3school.com.cn/jsref/jsref_reverse.asp) | 颠倒数组中元素的顺序。                                       |
+| [shift()](http://www.w3school.com.cn/jsref/jsref_shift.asp)  | 删除并返回数组的第一个元素                                   |
+| [slice()](http://www.w3school.com.cn/jsref/jsref_slice_array.asp) | 从某个已有的数组返回选定的元素                               |
+| [sort()](http://www.w3school.com.cn/jsref/jsref_sort.asp)    | 对数组的元素进行排序                                         |
+| [splice()](http://www.w3school.com.cn/jsref/jsref_splice.asp) | 删除元素，并向数组添加新元素。                               |
+| [toSource()](http://www.w3school.com.cn/jsref/jsref_tosource_array.asp) | 返回该对象的源代码。                                         |
+| [toString()](http://www.w3school.com.cn/jsref/jsref_toString_array.asp) | 把数组转换为字符串，并返回结果。                             |
+| [toLocaleString()](http://www.w3school.com.cn/jsref/jsref_toLocaleString_array.asp) | 把数组转换为本地数组，并返回结果。                           |
+| [unshift()](http://www.w3school.com.cn/jsref/jsref_unshift.asp) | 向数组的开头添加一个或更多元素，并返回新的长度。             |
+| [valueOf()](http://www.w3school.com.cn/jsref/jsref_valueof_array.asp) | 返回数组对象的原始值                                         |
+
+
+
+## 长度
+
+| 属性   | 描述                     |
+| ------ | :----------------------- |
+| length | 返回number类型的数组长度 |
+
+## 数组排序详解
+
+自带方法  arr.sort();
+
+sort方法有一个参数，传递一个回调方法，这个方法返回正负值，或者0（什么都不做）。
+
+```javascript
+function funcsort(a,b){
+    // console.log(a,b,a-b);//获取回调执行流程，参数，返回结果
+    return (a-b);//确认过眼神，负数会导致排序从大到小 ，但是返回0 ，啥都不干
+}
+```
+
+## 代码模拟
+
+```javascript
+<script type="text/javascript">
+    var arr= [1,5,9,2,10,3];
+    function funcsort(a,b){
+        // console.log(a,b,a-b);//获取回调执行流程，参数，返回结果
+        return (a-b);//确认过眼神，负数会导致排序从大到小 ，但是返回0 ，啥都不干
+    }
+    // arr.sort(funcsort);
+
+    // console.log(arr);
+    /*    通过加回调方法，使得实现数字排序
+
+                    // 15	  15     
+                    // 59	  159
+                    // 29	  1529
+                    // 25    1259
+                    // 12	  1259
+                    // 9 10  1259 10
+                    // 3 10  1259 3 10
+                    // 39   12539 10 
+                    // 35	  12359 10
+                    // 23    12359 10
+                */
+
+
+    //模拟回调
+    var ar=[];
+    function textsort(回调){
+        for(var item in arr){
+            ar.push(arr[item]);
+            srt(回调); 
+        }
+        console.log(ar);//排序完毕
+    }
+    function srt(回调){
+        for(var i = ar.length;i>1;i--){
+            if(ar.length==1){//防止最初只输入一个值的时候因为undefined导致不可描述的异常
+                break;
+            }else{
+                // console.log(ar[i-1],ar[i-2]);
+                if(回调(ar[i-2] , ar[i-1]) > 0){//a-b>=0,前者大后者小，换位
+                    // if(ar[i-2] < ar[i-1]){ //前者小与后者==>换位==>数字大的往前走，小于号是小的往前走
+                    var a = ar[i-1];
+                    ar[i-1] = ar[i-2];
+                    ar[i-2] = a;
+                }
+            }
+        } 
+    }
+    textsort(funcsort);
+</script>
+```
+
+
+
+# foreach遍历
+
+```javascript
+for(var index in arr){
+	console.log(index,arr[index]);
+}
+```
+
+
+
+# 回调
+
+传入回调方法名，加括号就可以调用。

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr= [1,5,9,2,10,3];
+			function funcsort(a,b){
+				// console.log(a,b,a-b);//获取回调执行流程，参数，返回结果
+				return (a-b) *-1;//确认过眼神，负数会导致排序从大到小 ，但是返回0 ，啥都不干
+			}
+			// arr.sort(funcsort);
+			// console.log(arr);
+			/*    通过加回调方法，使得实现数字排序
+			 
+				// 15	  15     
+				// 59	  159
+				// 29	  1529
+				// 25    1259
+				// 12	  1259
+				// 9 10  1259 10
+				// 3 10  1259 3 10
+				// 39   12539 10 
+				// 35	  12359 10
+				// 23    12359 10
+			*/
+		   
+		   
+		   //模拟回调
+		   var ar=[];//初始化返回排序好的数组
+		   //模拟数组对象的sort方法
+		   function textsort(回调){//接受一个回调函数的函数名
+			   for(var item in arr){
+				   ar.push(arr[item]);//加一个值
+				   srt(回调); //将回调函数名传入，排序一轮
+			   }
+			   console.log(ar);//排序完毕
+		   }
+		   function srt(回调){
+			   for(var i = ar.length;i>1;i--){
+				   if(ar.length==1){//防止最初只输入一个值的时候因为undefined导致不可描述的异常
+					   break;
+				   }else{
+					   // console.log(ar[i-1],ar[i-2]);
+					   //******************回调的使用*******************
+					   if(回调(ar[i-2] , ar[i-1]) > 0){//a-b>=0,前者大后者小，换位
+					   // if(ar[i-2] < ar[i-1]){ //前者小与后者==>换位==>数字大的往前走，小于号是小的往前走
+						   var a = ar[i-1];
+						   ar[i-1] = ar[i-2];
+						   ar[i-2] = a;
+					   }
+				   }
+			   } 
+		   }
+		   textsort(funcsort);
+		</script>
+	</body>
+</html>

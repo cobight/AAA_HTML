@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var 字典 = {name:"cobight",age:22};
+			var 数组 = new Array();
+			数组[0]="msg";
+			数组[1]=2;
+			数组.push(3);
+			数组.push(字典);
+			console.log(数组);
+			for(var i in 数组){
+				console.log(i,数组[i]);
+			}
+		</script>
+	</body>
+</html>

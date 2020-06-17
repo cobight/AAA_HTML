@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input value="开始" type="button" onclick="start()" />
+		<input value="停止" type="button" onclick="stop()" />
+		<h1 id="show"></h1>
+		<script type="text/javascript">
+			var timer;
+			// var year = date.getFullYear();
+			// var month = date.getMonth();
+			// var day = date.getDay();
+			// var hour = date.getHours();
+			// var minute = date.getMinutes();
+			// var second = date.getSeconds();
+			function start() {
+				timer = setInterval("next()", 1000);
+			}
+
+			function stop() {
+				clearInterval(timer);
+				timer = null;
+			}
+
+			function next() {
+				var date = new Date();
+				document.getElementById("show").innerText = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate() +
+					"  " +
+					date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+			}
+		</script>
+	</body>
+</html>

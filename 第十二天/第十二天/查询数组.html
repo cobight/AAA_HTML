@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="info" />
+		<input type="button" onclick="fucpush()" value="压入" />
+		<input type="button" onclick="alert(search());" value="查询" />
+		<script type="text/javascript">
+			var arr = [];
+			function fucpush(){
+				arr.push(document.getElementById("info").value);
+				console.log(arr);
+			}
+			function search(){
+				var name = document.getElementById("info").value;
+				for(var index = 0;index<arr.length;index++){
+					if(name == arr[index]){
+						return index;
+					}
+				}
+				return -1;
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1 id="show"></h1>
+		<script type="text/javascript">
+			var timer;
+			var a = prompt("请输入时间，开始倒计时！", "0-00-10").split("-");
+			var hour = a[0] * 1,
+				min = a[1] * 1,
+				sec = a[2] * 1;
+			// var hour = prompt("输入小时：",0) * 1,
+			// 	min = prompt("请输入分钟：",0) * 1,
+			// 	sec = prompt("请输入秒钟：", 10) * 1;
+			
+			var all_second = hour * 60 * 60 + min * 60 + sec;
+
+			function next() {
+				var h = parseInt(all_second / 60 /60);
+				var m = parseInt((all_second - h * 60 * 60) / 60);
+				var s = all_second - h * 3600 - m * 60;
+				console.log(h, m, s);
+				document.getElementById("show").innerText = "倒计时：" + h + "小时" + m + "分钟" + s + "秒钟";
+				all_second -= 1;
+				if (all_second <= -1) {
+					clearInterval(timer);
+					document.getElementById("show").innerText = "你🐎炸了!";
+				}
+			}
+			timer = setInterval("next()", 1000);
+		</script>
+	</body>
+</html>
