@@ -923,6 +923,44 @@ arr4[0]=123;//开辟好的空间可以直接写值
 | ------ | :----------------------- |
 | length | 返回number类型的数组长度 |
 
+## slice方法
+
+a是起始位置，0是第一个位置
+
+b是结束位置
+
+区间表达式为  [ a , a+b )
+
+```javascript
+var retn = arr.slice(a,b)
+
+案例
+var arr = [1,2,3,4,5,6,7,8,9];
+var get = arr.slice(1,4);
+console.log(get);
+console.log(arr);
+```
+
+## splice方法
+
+a是起始位置，0是第一个位置
+
+b是删除的数量
+
+“c” , 1 , 2 , 3后续加的值会插入到刚才删除的位置
+
+```
+var get = arr.splice(a, b, "c" ,1 ,2, 3);
+
+案例
+var arr = [1,2,3,4,5,6,7,8,9];
+var get = arr.splice(1,4);
+console.log(get);
+console.log(arr);
+```
+
+
+
 ## 数组排序详解
 
 自带方法  arr.sort();
@@ -997,7 +1035,7 @@ function funcsort(a,b){
 
 ```javascript
 for(var index in arr){
-	console.log(index,arr[index]);
+	console.log(index, arr[index]);
 }
 ```
 
