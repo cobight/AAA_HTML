@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			input{
+				width: 100%;
+				/* height: 100%; */
+			}
+			td,table{
+				border: 1px #000000 solid;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <div>
+			<h1 id="h1">h1内容</h1>
+			<h2>h2内容</h2>
+		</div> -->
+		<input style="width: auto;" type="button" value="插一行" onclick="insert_line();" />
+		<input style="width: auto;" type="button" value="删一行" onclick="delete_line();" />
+		<table width="60%"  style="text-align: center;margin: 150px auto;" cellspacing="0">
+			<thead>
+				<tr><td style="border: 0px" width="3%"><input type="checkbox" name="box" /></td><td style="border: 0px" width="3%">id</td><td style="border: 0px">产品名</td><td style="border: 0px">单价</td><td style="border: 0px" width="15%">数量</td><td style="border: 0px">计算</td><td style="border: 0px">价格</td><td style="border: 0px">总价</td></tr>
+			</thead>
+			<tbody>
+				<tr><td><input type="checkbox" name="cbox" /></td><td>1</td><td>华为P20</td><td>2999</td><td><div contenteditable="true">1</div></td><td><input type="button" value="计算" class="btn" /></td><td>0</td><td rowspan="10" width="10%" id="all_sum">0</td></tr>
+				<tr><td><input type="checkbox" name="cbox" /></td><td>2</td><td>华为P30</td><td>3999</td><td><div contenteditable="true">1</div></td><td><input type="button" value="计算" class="btn" /></td><td>0</td></tr>
+				<tr><td><input type="checkbox" name="cbox" /></td><td>3</td><td>华为P40</td><td>4999</td><td><div contenteditable="true">1</div></td><td><input type="button" value="计算" class="btn" /></td><td>0</td></tr>
+			</tbody>
+			
+		</table>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	var arrshangpin = [
+		{id:4,name:"华为P50",price:5999},
+		{id:5,name:"华为P60",price:6999},
+		{id:6,name:"华为P70",price:7999},
+		{id:7,name:"华为P80",price:8999},
+		{id:8,name:"华为P90",price:9999},
+		{id:9,name:"华为P100",price:10999},
+		{id:10,name:"华为P110",price:11999},
+		{id:11,name:"华为P120",price:12999}
+	]
+	function insert_line(){
+		var shangpin = arrshangpin.splice(0,1)[0];
+		var linestr = "<tr>"+
+					"<td><input type='checkbox' name='cbox' \/><\/td>"+
+					"<td>"+shangpin['id']+"<\/td>"+
+					"<td>"+shangpin['name']+"<\/td>"+
+					"<td>"+shangpin["price"]+"<\/td>"+
+					"<td><div contenteditable='true'>0<\/div><\/td>"+
+					"<td><input type='button' value='计算' class='btn' \/><\/td>"+
+					"<td>0<\/td>"+
+				"<\/tr>";
+		document.querySelector("tbody").innerHTML +=linestr;
+				// console.log(document.querySelector("tbody").innerHTML);
+		initfunc();	
+	}
+	function delete_line(){
+		var tab = document.querySelector("table");
+		var arr = tab.childNodes[3].querySelectorAll("tr");
+		// tab.removeChild(arr[arr.length]);
+		tab.deleteRow(arr.length);
+	}
+	function fix_price_all(){
+		var body = document.querySelector("tbody").querySelectorAll("tr");
+		// console.log(body[1].innerHTML);
+		var all_price = 0;
+		for(var index = body.length-1 ;index>=0;index--){
+			// console.log(body[index].childNodes[6].outerHTML);
+			// if(index % 2==1){
+				all_price+=body[index].childNodes[6].outerText * 1;
+			// }
+		}
+		// console.log(all_price);
+		document.querySelector("#all_sum").innerText = all_price;
+	}
+	function initfunc(){
+		document.querySelector("tbody").querySelectorAll("input").forEach(function(item,index){
+			var self = item.parentNode.parentNode;
+			item.onclick = function(){
+				// console.log(1);
+				self.childNodes[6].innerText = self.childNodes[4].innerText * self.childNodes[3].innerText;
+				fix_price_all();
+			}
+			 // console.log(self.outerHTML);
+		});
+		document.getElementsByName("cbox").forEach(function(item,index){
+			item.onclick = function(){
+				item.parentNode.parentNode.childNodes[5].firstElementChild.onclick();
+			}
+		});
+		document.getElementsByName("box")[0].onclick = function(){
+			var tag = this;
+			document.getElementsByName("cbox").forEach(function(item,index){
+				item.checked = tag.checked;
+			});
+		}
+	}
+	initfunc();
+	
+	
+	
+	
+	
+	
+
+</script> 
