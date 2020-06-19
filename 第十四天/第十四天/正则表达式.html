@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="index.html" method="get" onsubmit="return check()">
+			<div>name:
+				<input class="info" type="text" placeholder="cobight" name="name" />
+			</div>
+			<div>&nbsp;age &nbsp;:
+				<input class="info" type="text" placeholder="22" name="age" />
+			</div>
+			<div>email:
+				<input class="info" type="text" placeholder="邮箱" name="email" />
+			</div>
+			<input type="submit" value="提交" style="width: 100px;" />
+			<input type="button" value="测试" style="width: 100px;" onclick="check();" />
+		</form>
+		<script type="text/javascript">
+			function check() {
+				var inputs = document.querySelectorAll(".info");
+				var name = inputs[0].value;
+				var age = inputs[1].value;
+				var email = inputs[2].value;
+				console.log(name,age,email);
+				var reg = new RegExp("^.{2,6}$");
+				if(!reg.test(name)){
+					alert("名字输入不合法！");
+					return false;
+				}
+				reg = new RegExp("^[1-9]{1}$|^[1-9]{1}[0-9]{1}$|^1[0-9]{2}$");
+				if(!reg.test(age)){
+					alert("年龄输入不合法！");
+					return false;
+				}
+				reg = new RegExp("^[0-9a-zA-Z]+@[0-9a-zA-Z]+\..+");
+				if(!reg.test(email)){
+					alert("邮箱输入不合法！");
+					return false;
+				}
+				return true;
+			}
+				
+				
+				
+		</script>
+	</body>
+</html>

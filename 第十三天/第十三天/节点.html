@@ -25,7 +25,7 @@
 				<tr><td style="border: 0px" width="3%"><input type="checkbox" name="box" /></td><td style="border: 0px" width="3%">id</td><td style="border: 0px">产品名</td><td style="border: 0px">单价</td><td style="border: 0px" width="15%">数量</td><td style="border: 0px">计算</td><td style="border: 0px">价格</td><td style="border: 0px">总价</td></tr>
 			</thead>
 			<tbody>
-				<tr><td><input type="checkbox" name="cbox" /></td><td>1</td><td>华为P20</td><td>2999</td><td><div contenteditable="true">1</div></td><td><input type="button" value="计算" class="btn" /></td><td>0</td><td rowspan="10" width="10%" id="all_sum">0</td></tr>
+				<tr><td><input type="checkbox" name="cbox" /></td><td>1</td><td>华为P20</td><td>2999</td><td><div contenteditable="true">1</div></td><td><input type="button" value="计算" class="btn" /></td><td>0</td><td rowspan="11" width="10%" id="all_sum">0</td></tr>
 				<tr><td><input type="checkbox" name="cbox" /></td><td>2</td><td>华为P30</td><td>3999</td><td><div contenteditable="true">1</div></td><td><input type="button" value="计算" class="btn" /></td><td>0</td></tr>
 				<tr><td><input type="checkbox" name="cbox" /></td><td>3</td><td>华为P40</td><td>4999</td><td><div contenteditable="true">1</div></td><td><input type="button" value="计算" class="btn" /></td><td>0</td></tr>
 			</tbody>
@@ -52,11 +52,11 @@
 					"<td>"+shangpin['id']+"<\/td>"+
 					"<td>"+shangpin['name']+"<\/td>"+
 					"<td>"+shangpin["price"]+"<\/td>"+
-					"<td><div contenteditable='true'>0<\/div><\/td>"+
+					"<td><div contenteditable='true'>1<\/div><\/td>"+
 					"<td><input type='button' value='计算' class='btn' \/><\/td>"+
 					"<td>0<\/td>"+
 				"<\/tr>";
-		document.querySelector("tbody").innerHTML +=linestr;
+		document.querySelector("tbody").innerHTML += linestr;
 				// console.log(document.querySelector("tbody").innerHTML);
 		initfunc();	
 	}

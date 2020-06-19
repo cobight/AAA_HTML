@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="index.html" method="get" onsubmit="return checkForm()">
+			<div>name:
+				<input class="info" type="text" placeholder="cobight" name="name" />
+			</div>
+			<div>&nbsp;age &nbsp;:
+				<input class="info" type="text" placeholder="22" name="age" />
+			</div>
+			<div>email:
+				<input class="info" type="text" placeholder="邮箱" name="email" />
+			</div>
+			<input type="submit" value="提交" style="width: 100px;" />
+			<input type="button" value="测试" style="width: 100px;" onclick="console.log(checkForm());" />
+		</form>
+	</body>
+</html>
+<script type="text/javascript">
+	function checkForm() {
+		var inputs = document.querySelectorAll(".info");
+		var name = inputs[0];
+		var age = inputs[1];
+		var email = inputs[2];
+		console.log(name,age,email);
+		if (name.value.length <= 0 || name.value.length > 10) {
+			alert("name输入有问题");
+		} else if (age.value * 1 <= 0 || age.value * 1 > 200) {
+			alert("年龄输入有问题");
+		} else if (email.value.indexOf("@") == -1 || email.value.indexOf(".") == -1) {
+			alert("邮箱地址有问题");
+		} else {
+			return true;
+		}
+		return false;
+	}
+</script>

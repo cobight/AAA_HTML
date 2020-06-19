@@ -1044,3 +1044,228 @@ for(var index in arr){
 # 回调
 
 传入回调方法名，加括号就可以调用。
+
+# 表格
+
+## 基本属性
+
+height
+
+width
+
+cellspace
+
+paddingspace
+
+border
+
+## 取表格行数
+
+table.rows.length
+
+## 加一行
+
+insertrow()方法，参数为插入的索引
+
+## 加一列
+
+insertcell()方法，参数为列的下标
+
+## 删一行
+
+deleterow()方法，参数为删除的索引
+
+# 表单验证
+
+
+
+# 正则表达式
+
+定义一个正则对象，第一个参数是准备匹配的原字符串，第二个参数是匹配选项。
+
+“i”  不区分大小写，“g”   global全局多个，"m"是多行，一般与开头^   结尾$    相配合。
+
+```javascript
+新建一个正则对象，必须的参数有表达式
+也就是可以两种创建
+// let reg1=/cat/i;
+let reg1=new RegExp(key,"i");
+```
+
+元字符：
+
+- .:匹配任意字符，除了换行和行结束符
+- \w：匹配a-z,A-Z,0-9,下划线
+- \W: 非单词字符
+- \s: 空白字符
+- \S: 非空白字符
+- \d: 数字字符
+- \D：非数字字符
+- \b: 单词边界
+- \B: 非单词边界
+
+量词：
+
+- ^ :限定开始
+
+- $: 限定结尾
+
+- n+: 限定n 至少出现一次 一次或多次
+
+- n*: 0次或多次
+
+- n?: 0次或一次
+
+- n{x,y} : 大于等于x ,小于等于y
+
+- n{x}:限定x次
+
+- n{x,} ：限定至少x次
+
+  []:匹配范围
+
+  [^n]：除了n之外
+
+  | :或
+
+## test方法
+
+新建一个正则对象，通过test方法，传入需要匹配的字符串。
+
+如果匹配上了，返回真，匹配不上返回假。
+
+```javascript
+let str="this is a CAT,there is a cat";
+
+// 表达式对象
+
+let key="cat";
+
+// let reg1=/cat/i;
+let reg1=new RegExp(key,"i");
+
+if(reg1.test(str)){
+    console.log('匹配');
+}else{
+    console.log('不匹配');
+}
+```
+
+## exec方法
+
+需要循环执行，一次拿一个.
+
+返回所有匹配项后会返回一个null，如果继续调用此函数，将还会从头开始返回匹配项。
+
+返回的匹配项有匹配到的字符串，对应下标，还有匹配的原字符串。
+
+```javascript
+let str="this is a CAT,there is a cat,cat";
+			
+//  表达式对象
+
+let key="cat";
+// let reg1=/cat/g;
+let reg1=new RegExp(key,"ig");
+let retnarr =[];
+let arr;
+while(arr = reg1.exec(str)){
+    retnarr.push(arr);
+    console.log(arr);
+}
+```
+
+## match方法
+
+由字符串提供的接口，参数是正则对象。
+
+返回的是匹配上的字符串数组，没有对应下标。
+
+```javascript
+let str="this is a CAT,there is a cat,cat";
+			
+//  表达式对象
+
+let key="cat";
+let reg=/cat/ig;
+// let reg=new RegExp(key,"ig");
+
+// match: 字符串的函数，匹配（正则表达式）
+// ary:数组
+let ary=str.match(reg);
+ary.forEach(function(item){
+	console.log(item);
+});
+```
+
+## 字符串str
+
+##### match()：**字符串.match(正则表达式):返回符合正则表达式的数组**
+
+##### repalce(): 字符串.replace(正则表达式,"替换后的字符串")；查找并替换符合正则表达式的内容，返回替换后的结果
+
+##### search(): 字符串.search(正则表达式)；查找符合正则表达式要求的子字符串，第一次出现的索引
+
+# 使用字符串进行基本的表单验证
+
+[html5中的不同的输入元素](https://www.w3school.com.cn/html5/html_5_form_input_types.asp)
+
+字符串常用方法：
+
+| 方法              | 描述                                               |
+| ----------------- | -------------------------------------------------- |
+| **charAt()**      | 返回指定索引位置的字符                             |
+| charCodeAt()      | 返回指定索引位置字符的 Unicode 值                  |
+| **concat()**      | 连接两个或多个字符串，返回连接后的字符串           |
+| fromCharCode()    | 将 Unicode 转换为字符串                            |
+| **indexOf()**     | 返回字符串中检索指定字符第一次出现的位置           |
+| **lastIndexOf()** | 返回字符串中检索指定字符最后一次出现的位置         |
+| match()           | 找到一个或多个正则表达式的匹配                     |
+| replace()         | 替换与正则表达式匹配的子串                         |
+| search()          | 检索与正则表达式相匹配的值                         |
+| slice()           | 提取字符串的片断，并在新的字符串中返回被提取的部分 |
+| **split()**       | 把字符串分割为子字符串数组                         |
+| **substr()**      | 从起始索引号提取字符串中指定数目的字符             |
+| **substring()**   | 提取字符串中两个指定的索引号之间的字符             |
+| **toLowerCase()** | 把字符串转换为小写                                 |
+| toString()        | 返回字符串对象值                                   |
+| **toUpperCase()** | 把字符串转换为大写                                 |
+| **trim()**        | 移除字符串首尾空白                                 |
+| valueOf()         | 返回某个字符串对象的原始值                         |
+
+```javascript
+<script>
+			let str="唐僧-四人-一路-西天取经";
+			
+			// let c1=str.charAt(0);
+			// console.log(c1);
+			
+			//将字符串以指定的分隔符拆分得到数组
+			// let ary=str.split("-");
+			// ary.forEach(function(item){
+			// 	console.log(item);
+			// })
+			
+			// 截取字符串
+			// 参数1:  开始索引0
+			// 参数2:  长度，几个
+			// let s1=str.substr(0,2);
+			// console.log(s1);
+			// // 参数1:  开始索引0
+			// // 参数2:  结束索引，不包括该索引
+			// let s2=str.substring(0,2);
+			// console.log(s2);
+			
+			// let str1="     aaa           ";
+			// console.log(str1.length);
+			// let s2=str1.trim();
+			// console.log(s2.length);
+			// console.log(s2.toLowerCase());
+			// console.log(s2.toUpperCase());
+			
+			
+			
+		</script>
+```
+
+# 
