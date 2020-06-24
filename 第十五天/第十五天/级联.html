@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		省份：
+		<select id="select1">
+
+		</select>
+		城市：
+		<select id="select2">
+
+		</select>
+	</body>
+</html>
+<script type="text/javascript">
+	var sheng = {
+		"河南": ['郑州', '新乡', '开封', '洛阳'],
+		"河北": ['邯郸', '潍坊', '衡水', '保定'],
+		"山东": ['青岛', '济南', '烟台', '日照']
+	}
+	function initproince() {
+		var select = document.querySelector("#select1");
+		for (var s in sheng) {
+			var op = new Option(s, s);
+			select.appendChild(op);
+		}
+		document.querySelector("#select1").onchange();
+	}
+	document.querySelector("#select1").onchange = function() {
+		var select1 = this;
+		var select2 = document.querySelector("#select2");
+		var shengfen = sheng[this.value];
+		console.log(shengfen);
+		select2.options.length = 0;
+		shengfen.forEach(function(item, index) {
+			var op = new Option(item, item);
+			select2.add(op);
+		});
+	}
+	initproince();
+</script>

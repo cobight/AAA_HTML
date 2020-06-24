@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>级联菜单</title>
+		<script>
+			var citys=[];
+			citys['河南']=['郑州','新乡','开封','洛阳'];
+			citys['河北']=['邯郸','潍坊','衡水','保定'];
+			citys['山东']=['青岛','济南','烟台','日照'];
+			function initProince(){
+				var province=document.querySelector("#province");
+				for(let p in citys){
+					var op=new Option(p,p);
+					province.options.add(op);
+				}
+				document.querySelector("#province").onchange=function(){
+					let city=document.querySelector("#city");
+					let pIndex=document.querySelector("#province").value;
+					let ary=citys[pIndex];
+					city.options.length=0;
+					for(let i=0;i<ary.length;i++){
+						let op=new Option(ary[i],ary[i]);
+						city.options.add(op);
+					}
+				}
+			}
+			
+			window.onload = initProince;
+		</script>
+	</head>
+	<body>
+		<div>
+			家庭住址：省份:<select id="province">
+				<option value="0">请选择</option>
+				</select> 城市:<select id="city" ></select>
+		</div>
+		
+	</body>
+<html>

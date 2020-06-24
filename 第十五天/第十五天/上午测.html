@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" name="" id="" value="add" onclick="addline()" />
+		<input type="button" name="" id="" value="del" onclick="delline()" />
+		<table id="table">
+
+		</table>
+	</body>
+	<script type="text/javascript">
+		var n = 0;
+		let tab = document.querySelector("table");
+
+		function addline() {
+			let tr = tab.insertRow(tab.rows.length);
+			let td1 = tr.insertCell(0);
+			td1.innerText = ++n;
+			let td2 = tr.insertCell(1);
+			td2.innerHTML = "<input type='checkbox' value='选择框' name='sex' />";
+			let td3 = tr.insertCell(2);
+			td3.innerText = "girl";
+			let td4 = tr.insertCell(3);
+			td4.innerText = "0.0";
+		}
+
+		function addline1() {
+			let tr = document.createElement("tr");
+			let td1 = document.createElement("td");
+			td1.innerText = ++n;
+			let td2 = document.createElement("td");
+			td2.innerHTML = "<input type='checkbox' value='选择框' name='sex' />";
+			let td3 = document.createElement("td");
+			td3.innerText = "boy";
+			let td4 = document.createElement("td");
+			td4.innerText = "0.0";
+			// tab.insertRow(tab.rows.length);
+			tr.appendChild(td1);
+			tr.appendChild(td2);
+			tr.appendChild(td3);
+			tr.appendChild(td4);
+			tab.appendChild(tr);
+		}
+
+		function delline() {
+			// console.log(tab.outerHTML);
+			--n;
+			tab.deleteRow(tab.rows.length - 1);
+		}
+		addline();
+		addline();
+	</script>
+</html>

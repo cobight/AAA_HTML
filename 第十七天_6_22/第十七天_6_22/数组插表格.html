@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<table border="1" id="table"></table>
+	</body>
+</html>
+<script type="text/javascript">
+	var arr = [
+		{"name":"六味地黄丸","price":"998","num":"996"},
+		{"name":"肾宝","price":"1888","num":"9998"},
+		{"name":"风油精","price":"10","num":"6666"},
+		{"name":"枸杞","price":"666","num":"99999"}
+	];
+	let n = 0;
+	let tab = document.querySelector("table");
+	
+	function addline(name, price, num) {
+		let tr = tab.insertRow(tab.rows.length);
+		let td1 = tr.insertCell(0);
+		td1.innerText = ++n;
+		let td2 = tr.insertCell(1);
+		td2.innerHTML = name;
+		let td3 = tr.insertCell(2);
+		td3.innerText = price;
+		let td4 = tr.insertCell(3);
+		td4.innerText = num;
+	}
+	arr.forEach(function(item,index){
+		addline(item.name,  item.price,  item.num);
+	})
+</script>

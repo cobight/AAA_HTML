@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var obj = new Object();
+			obj.arr = [];
+			obj.index = 0;
+			//...变量名可以接收一组参数，打包成数组。
+			obj.ready = function(...func){
+				if(func.length != 0){
+					console.log("传进来了个方法");
+					this.arr.push.apply(this.arr,func);
+				}else{
+					if(this.arr.leng==0){
+						alert("没有方法可调用");
+					}else{
+						
+						this.arr[this.index++]();
+						
+						if(this.index == this.arr.length){
+							console.log("retn");
+							this.index = 0;
+						}
+					}
+				}
+			}  
+			//写一个回调
+			obj.ready(function(){
+				console.log("传一个log输出1");
+			});
+			//写多个回调
+			obj.ready(function(){
+				console.log("传多个log输出2");
+			},function(){
+				console.log("传多个log输出3");
+			},function(){
+				console.log("传多个log输出4");
+			}); 
+			//使用回调
+			obj.ready();
+			obj.ready();
+			obj.ready();
+			obj.ready();
+			obj.ready();
+			obj.ready();
+			obj.ready();
+			obj.ready();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+			// var obj = new Object();
+			// obj.arr = [];
+			// obj.index=0;
+			// //...变量名可以接收一组参数，打包成数组。
+			// obj.ready = function(...func){
+			// 	if(func.length != 0){
+			// 		console.log("传进来了个方法");
+			// 		this.arr.push.apply(this.arr,func);
+			// 	}else{
+			// 		this.arr.forEach(function(item,index){
+			// 			item();
+			// 		})
+			// 	}
+			// } 
+			// //写一个回调
+			// obj.ready(function(){
+			// 	console.log("传一个log输出1");
+			// });
+			// //写多个回调
+			// obj.ready(function(){
+			// 	console.log("传多个log输出2");
+			// },function(){
+			// 	console.log("传多个log输出3");
+			// },function(){
+			// 	console.log("传多个log输出4");
+			// }); 
+			// //使用回调
+			// obj.ready();
+			
+			
+			// var obj = new Object();
+			// obj.func;
+			// obj.ready = function(func){
+			// 	console.log(typeof func,func);
+			// 	if(typeof func == "function"){//写入回调函数
+			// 		this.func = func;
+			// 	}else if(typeof func == "undefined"){//调用回调函数
+			// 		this.func();
+			// 	}
+			// }
+			// obj.ready(function(){
+			// 	alert(1);
+			// }); 
+			// obj.ready();
+			
+			
+			// function getmore(...canshu){
+			// 	for(var index in canshu){
+			// 		console.log(canshu[index]);
+			// 	}
+			// }
+			// getmore(1,2,3,4,5,6);
+		</script>

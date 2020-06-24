@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<style>
+			.txt{
+				color:red;
+			}
+		</style>
+		<script>
+			function test1(){
+				document.querySelector("#d1").innerText=new Date();
+			}
+			
+			function test2(){
+				document.querySelector("#d2").className="txt";
+			}
+			
+			// onload:页面加载完成后执行的事件，一个页面只能执行一次
+			// window.onload=test2;
+			// window.onload=function(){
+			// 	test1();
+			// 	test2();
+			// }
+			
+			// $(document).ready(function(){
+			// 	test1();
+			// 	// test2();
+			// });
+			
+			// $(document).ready(function(){
+			// 	// test1();
+			// 	test2();
+			// });
+			
+			// dom就绪事件，页面上可以绑定多次，
+			// $(function(){
+			// 	test1();
+			// });
+			
+			// $(function(){
+			// 	test2();
+			// });
+			
+		
+			
+			// 就绪后才执行事件绑定
+			$(function(){
+				$("select").change(function(){
+					alert(this.value);
+				});
+				
+				
+				// 绑定失去焦点事件
+				// $("#username")
+				$("input[name='username']").blur(function(){
+					let reg=/^\w{3,5}$/i;
+					if(!reg.test(this.value.trim())){
+						$("#usernameinfo").text("请输入正确的内容");
+					}else{
+						$("#usernameinfo").text("你好厉害啊！");
+					}
+				});
+				
+				
+			});
+			
+			
+			
+			$(function(){
+				/* $("input[type='button']").click(function(){
+					var h1=document.createElement("h1");
+					h1.innerText="你试试";
+					document.querySelector("#content").appendChild(h1);
+				}); */
+				
+				$("input[type='button']:eq(0)").click(function(){
+					var h1=document.createElement("h1");
+					h1.innerText="你试试";
+					document.querySelector("#content").appendChild(h1);
+				});
+				
+				// var test3=function(){
+				// 	console.log('自由了');
+				// }
+				
+				// 给第二个按钮绑定单击事件
+				$("input[type='button']:eq(1)").click(function(){
+					// 解除绑定
+					$("#content").off("click","h1");
+				});
+				
+				
+				// $("h1").click(function(){
+				// 	alert(this.innerText);
+				// });
+				
+				// "#content"：父类型的选择器
+				// "click"：事件名
+				// "h1"：需要绑定事件的子元素
+				// f1:事件绑定后执行的匿名函数
+				// $("#content").on("click","h1",function(){
+				// 	alert(this.innerText);
+				// });
+				
+				// 动态绑定 并传入参数
+				$("#content").on("click","h1",{key:'AAA',key2:'BBB',key3:'CCC'},function(event){
+					// alert(this.innerText);
+					alert(event.data.key);
+					alert(event.data.key2);
+					alert(event.data.key3);
+				});
+				
+				
+				
+			});
+			
+			
+		</script>
+	</head>
+	<body>
+		<select name="city">
+			<option value="zz">郑州</option>
+			<option value="xx">新乡</option>
+			<option value="kf">开封</option>
+		</select>
+		
+		<div><input type="text" name="username"/><span id="usernameinfo">请输入名字</span></div>
+		<div><input type="text" name="pwd"/><span id="pwdinfo">请输入密码</span></div>
+		<div id="d1"></div>
+		<input type="button" value="动态添加"/>
+		<input type="button" value="解除绑定"/>
+		<div id="d2" >hello world!</div>
+		<div id="content">
+			<h1>已经存在的

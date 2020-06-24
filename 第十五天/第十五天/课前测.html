@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="index.html" method="get">
+			用户名：2-4汉字<input type="text" id="name" /><br />
+			密码：至少6位的字符或者数字<input type="password" id="pwd" /><br />
+			手机号：<input type="text" id="phone" /><br />
+			<input type="button" onclick="submitt()" value="提交" />
+		</form>
+		<script type="text/javascript">
+			
+			function submitt(){
+				if(checkform()){
+					document.querySelector("form").submit();
+				}
+			}
+			function checkform(){
+				console.log(1);
+				var name = document.querySelector("#name").value;
+				var pwd = document.querySelector("#pwd").value;
+				var phone = document.querySelector("#phone").value;
+				var reg = new RegExp("^[\u4e00-\u9fa5]{2,4}$");
+				
+				if(!reg.test(name)){
+					alert("name   no");
+					return false;
+				}
+				reg = new RegExp("^[0-9a-zA-Z]{6}.*$");
+				if(!reg.test(pwd)){
+					alert("pwd   no");
+					return false;
+				}
+				reg = new RegExp("^[0-9]{11}$");
+				if(!reg.test(phone)){
+					alert(" phone   no");
+					return false;
+				}
+				return true;
+			}
+		</script>
+	</body>
+</html>

@@ -1075,7 +1075,7 @@ insertcell()方法，参数为列的下标
 
 deleterow()方法，参数为删除的索引
 
-# 表单验证
+
 
 
 
@@ -1235,37 +1235,311 @@ ary.forEach(function(item){
 
 ```javascript
 <script>
-			let str="唐僧-四人-一路-西天取经";
-			
-			// let c1=str.charAt(0);
-			// console.log(c1);
-			
-			//将字符串以指定的分隔符拆分得到数组
-			// let ary=str.split("-");
-			// ary.forEach(function(item){
-			// 	console.log(item);
-			// })
-			
-			// 截取字符串
-			// 参数1:  开始索引0
-			// 参数2:  长度，几个
-			// let s1=str.substr(0,2);
-			// console.log(s1);
-			// // 参数1:  开始索引0
-			// // 参数2:  结束索引，不包括该索引
-			// let s2=str.substring(0,2);
-			// console.log(s2);
-			
-			// let str1="     aaa           ";
-			// console.log(str1.length);
-			// let s2=str1.trim();
-			// console.log(s2.length);
-			// console.log(s2.toLowerCase());
-			// console.log(s2.toUpperCase());
-			
-			
-			
-		</script>
+    let str="唐僧-四人-一路-西天取经";
+
+    // let c1=str.charAt(0);
+    // console.log(c1);
+
+    //将字符串以指定的分隔符拆分得到数组
+    // let ary=str.split("-");
+    // ary.forEach(function(item){
+    // 	console.log(item);
+    // })
+
+    // 截取字符串
+    // 参数1:  开始索引0
+    // 参数2:  长度，几个
+    // let s1=str.substr(0,2);
+    // console.log(s1);
+    // // 参数1:  开始索引0
+    // // 参数2:  结束索引，不包括该索引
+    // let s2=str.substring(0,2);
+    // console.log(s2);
+
+    // let str1="     aaa           ";
+    // console.log(str1.length);
+    // let s2=str1.trim();
+    // console.log(s2.length);
+    // console.log(s2.toLowerCase());
+    // console.log(s2.toUpperCase());
+
+
+
+</script>
 ```
 
-# 
+# 表单实时验证
+
+## 验证的实现
+
+onfocus获得焦点事件
+
+onblur失去焦点事件
+
+## 实时验证
+
+依赖失焦事件onblur调用方法验证。
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.yes{
+				display: none;
+			}
+			.no{
+				display: ;
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="index.html" method="get">
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td>name：</td>
+					<td><input id="name"  type="text" onblur="check('#name','^[\u4e00-\u9fa5]{2,4}$')"  /></td>
+					<td class="yes">name 错误！</td>
+				</tr>
+				<tr>
+					<td>password：</td>
+					<td><input id="pwd"  type="password" onblur="check('#pwd','^[0-9a-zA-Z]{2,6}$')"  /></td>
+					<td class="yes">password 错误！</td>
+				</tr>
+				<tr>
+					<td>age：</td>
+					<td><input id="age"  type="text" onblur="check('#age','^[1-9]{1}$|^[1-9]{1}[0-9]{1}$|^1[0-9]{2}$')"   /></td>
+					<td class="yes">age 错误！</td>
+				</tr>
+			</table>
+		</form>
+		<script type="text/javascript">
+			function check(key,str){
+				var name = document.querySelector(key);
+				var reg = new RegExp(str);
+				if(!reg.test(name.value)){
+					name.parentNode.parentNode.lastElementChild.className = "no";
+				}else{
+					name.parentNode.parentNode.lastElementChild.className = "yes";
+				}
+			}
+		</script>
+	</body>
+</html>
+
+```
+
+# select级联
+
+下拉列表框1值改变，下拉列表框2下拉的所有选项都变。
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		省份：
+		<select id="select1">
+
+		</select>
+		城市：
+		<select id="select2">
+
+		</select>
+	</body>
+</html>
+<script type="text/javascript">
+	var sheng = {
+		"河南": ['郑州', '新乡', '开封', '洛阳'],
+		"河北": ['邯郸', '潍坊', '衡水', '保定'],
+		"山东": ['青岛', '济南', '烟台', '日照']
+	}
+	function initproince() {
+		var select = document.querySelector("#select1");
+		for (var s in sheng) {
+			var op = new Option(s, s);
+			select.appendChild(op);
+		}
+		document.querySelector("#select1").onchange();
+	}
+	document.querySelector("#select1").onchange = function() {
+		var select1 = this;
+		var select2 = document.querySelector("#select2");
+		var shengfen = sheng[this.value];
+		console.log(shengfen);
+		select2.options.length = 0;
+		shengfen.forEach(function(item, index) {
+			var op = new Option(item, item);
+			select2.add(op);
+		});
+	}
+	initproince();
+</script>
+
+```
+
+# Object对象
+
+共有三个创建方法。
+
+## 创建方法1
+
+```javascript
+var a = new Object();
+a.name = "222";
+a.age = 18;
+a.eat = function(a,b){
+    ***
+}
+```
+
+## 创建方法2
+
+```javascript
+var a = {name:"222",age:18,eat:function(a,b){
+    ***
+}};
+```
+
+## 创建方法3
+
+```javascript
+//模拟类：模板
+//也可以传方法
+function Person(name,sex,age){
+    // this：指针：指向当前的对象
+    this.name=name;
+    this.age=age;
+    this.sex=sex;
+}
+//创建对象[了解 类 构造方法 对象]
+let p1=new Person('aaa','男',18);
+console.log(p1.name+":"+p1.age+":"+p1.sex);
+```
+
+# json对象
+
+## js-object对象转json字符串
+
+功能：发送给后端，提交数据。
+
+```javascript
+//js-object转json字符串，发送给后端
+var obj = {name:"cobight",age:66};
+var jsnstr = JSON.stringify(obj);
+console.log(typeof jsnstr,jsnstr);
+```
+
+```javascript
+返回    string {"name":"cobight","age":66}
+```
+
+## json字符串转js-object对象
+
+功能：从后端接受数据，当成对象使用。
+
+```javascript
+//json字符串转js-object，接收从后端
+var jsnstr = {"name":"cobight","age":66};
+var obj = JSON.parse(jsnstr);
+console.log(typeof obj,obj);
+```
+
+```javascript
+返回    object {"age":66,"name":"cobight"}
+```
+
+# jQuery
+
+- 轻量级
+- 简单
+- 跨浏览器
+- 链式 操作
+
+jquery 对象: 将dom对象转换成jquery对象 ；转换后，可以使用jquery中提供的各种函数
+
+## DOM转jQuery对象
+
+var jqry = $(DOM);
+
+## jQuery转DOM
+
+jQuery对象是个数组！所以下标[0]或者123就能拿到DOM对象，get()方法也能拿到对应下标的DOM对象。
+
+- html( )：类似于innerHTML,用来操作内部的html内容
+
+- text()：类似于innerText,用来操作内部的文本内容；
+
+- val() ：类似于value属性，获取或者设置value属性值
+
+- attr()：是属性：attribute单词的简写，用来操作dom元素中的各种普通属性，赋值，取值
+
+  ​				可以 k，v 赋值，也能{ v1:v1 ,k2:v2 }赋值。
+
+  - removeAttr(属性名) ：删除指定的属性
+
+- prop(): 是属性：property单词的简写，用来操作dom元素中的各种可以简写的属性：checked
+
+  - removeProp(属性名)
+
+什么都不写会返回对应内容，里面写了value，就是赋值了。
+
+## jQuery的寻找标签
+
+$("#id")	用id找标签
+
+$(".class")	用class找标签
+
+$("tagname")	用标签名找标签
+
+$("table tr:last")取第一个tr里的最后一行
+
+$("input[name='name1']:eq(0)")	用标签名+属性键值+:eq(下标)对找指定标签
+
+:eq(x)与:first,:last配合
+
+## 事件常规绑定
+
+click，change，focus，blur等等事件写法
+
+```
+$("#abc").click();//调用
+$("#abc").click(function(this.a,this.b,this.c){
+	******do something;
+});
+```
+
+## 用on绑定用off解除
+
+绑定事件，指定点击事件，指定标签绑定，携带参数obj类型，然后是回调函数，携带的obj数据就是参数event.data
+
+```javascript
+$("#content").on("click","h1",{key:'AAA',key2:'BBB',key3:'CCC'},function(event){
+    // alert(this.innerText);
+    alert(event.data.key);
+    alert(event.data.key2);
+    alert(event.data.key3);
+});
+```
+
+解除事件，指定点击事件，指定标签
+
+```javascript
+$("#content").off("click","h1");
+```
+
+## 事件多参绑定
+
+toggle切换
+
+hover悬浮
+
+toggle方法里，参数是多个function方法，通过点击轮着触发
+
+hover方法里，参数是多个function方法，第一个鼠标移上，第二个鼠标移出
