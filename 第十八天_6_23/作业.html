@@ -53,36 +53,38 @@
 					<td>2</td>
 					<td><input type='number' value="10" /></td>
 					<td>20</td>
-					<td>X</td>
+					<td class="del">X</td>
 				</tr>
 			</tbody>
+			<tr><td colspan="6"><div>总价：<span>20</span></div></td></tr>
 		</table>
-		<div>总价：<span>20</span></div>
+		
 	</body>
 </html>
 <script type="text/javascript">
 	var n = 1;
+	//插行
 	function addline_bottom() {
 		var name = $(".info:eq(0)").val(),
 			price = $(".info:eq(1)").val(),
 			number = $(".info:eq(2)").val();
 		var line = "<tr><td>" + (++n) + "</td><td>" + name + "</td><td>" + price + "</td><td><input type='number' value='" +
-			number + "'/></td><td>" + price * number + "</td><td>X</td></tr>"
-		$("#table tbody").append(line);
+			number + "'/></td><td>" + price * number + "</td><td class='del'>X</td></tr>"
+		$("#table tbody:first").append(line);
 		addall();
-		$("#table tbody tr:last td:last").click(function() {
-			$(this).parent().remove();
-			addall();
-		});
 	}
-	$("#table tbody tr:last td:last").click(function() {
+	//删除事件
+	$("#table tbody").on("click","td",function(){
 		$(this).parent().remove();
+		addall(); 
 	});
+	//修改值
 	$("#table tbody").on("change", "input", function() {
 		var num = this.value * $(this).parent().prev().text();
 		$(this).parent().next().text(num);
 		addall();
 	});
+	//计算总价
 	function addall() {
 		//总价计算
 		var allmoney = 0;

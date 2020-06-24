@@ -1059,6 +1059,8 @@ paddingspace
 
 border
 
+border-collapse: collapse;中间的重叠那部分空
+
 ## 取表格行数
 
 table.rows.length
@@ -1504,6 +1506,8 @@ $("input[name='name1']:eq(0)")	用标签名+属性键值+:eq(下标)对找指定
 
 :eq(x)与:first,:last配合
 
+$("div").siblings() 找到div标签的其他同级标签
+
 ## 事件常规绑定
 
 click，change，focus，blur等等事件写法
@@ -1543,3 +1547,4 @@ hover悬浮
 toggle方法里，参数是多个function方法，通过点击轮着触发
 
 hover方法里，参数是多个function方法，第一个鼠标移上，第二个鼠标移出
+

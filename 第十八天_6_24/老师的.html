@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<style>
+			.d1{
+				border:1px solid blue;
+				background-color: bisque;
+				width:500px;
+				height:300px;
+			}
+			.sel{
+				color:red;
+				font-size:2em;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<input type="button" id="btn1" value="隐藏" />
+		<input type="button" id="btn2" value="显示" />
+		<div id="d1">一见钟情 日久生情</div>
+		
+		<button id="go"> Run</button>
+		<div id="block">Hello!</div>
+		
+		<ul>
+			<li>大漠孤烟直，长河落日圆</li>
+			<li>黄沙百战穿金甲，不破楼兰终不还</li>
+			<li>大漠孤烟直，长河落日圆</li>
+			<li>黄沙百战穿金甲，不破楼兰终不还</li>
+			<li>大漠孤烟直，长河落日圆</li>
+			<li>黄沙百战穿金甲，不破楼兰终不还</li>
+			<li>大漠孤烟直，长河落日圆</li>
+			<li>黄沙百战穿金甲，不破楼兰终不还</li>
+		</ul>
+		
+
+		
+	</body>
+	<script>
+		var highlingt =0;
+		$("li").click(function(){
+			$(this).toggleClass("sel",highlingt++ % 5 == 0).siblings().removeClass("sel");
+		});
+		
+		
+		$(function(){
+			$("#btn1").click(function(){
+				// 回调函数
+				// $("#d1").hide(1000,function(){
+				// 	$(this).show(1000,function(){
+				// 		console.log(new Date());
+				// 	});
+				// });
+				
+				// $('#d1').slideUp(1500).delay(1500).fadeIn(2000).delay(1000).animate({ 
+		  //   width: "90%",
+		  //   height: "100%", 
+		  //   fontSize: "10em", 
+		  //   borderWidth: 10
+		  // }, 1000 );
+		  
+		  // 
+				$("#d1").toggleClass("d1");
+			});
+		});
+		
+		// 在一个动画中同时应用三种类型的效果
+		$("#go").click(function(){
+		  $("#block").animate({ 
+		    width: "90%",
+		    height: "100%", 
+		    fontSize: "10em", 
+		    borderWidth: 10
+		  }, 1000 );
+		});
+		
+		
+	</script>
+</html>
