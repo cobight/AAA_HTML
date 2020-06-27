@@ -74,8 +74,8 @@
 		addall();
 	}
 	//删除事件
-	$("#table tbody").on("click","td",function(){
-		$(this).parent().remove();
+	$("#table tbody").on("click","td[class='del']",function(){
+		$(this).parent().remove(); 
 		addall(); 
 	});
 	//修改值

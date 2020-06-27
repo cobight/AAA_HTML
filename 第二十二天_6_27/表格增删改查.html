@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<style type="text/css">
+			#table {
+				width: 80%;
+				border-collapse: collapse;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<table id="table" border="1" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<td>编号</td>
+					<td>商品名</td>
+					<td>单价</td>
+					<td>数量</td>
+					<td>小计</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<tbody id="tb1">
+				<!-- <tr>
+					<td>0</td>
+					<td>name</td>
+					<td>price</td>
+					<td>num</td>
+					<td>xiaoji</td>
+					<td>X</td>
+				</tr> -->
+			</tbody>
+		</table>
+		<table id="info">
+			<tr>
+				<td>编号：</td>
+				<td><input type="text" disabled /></td>
+			</tr>
+			<tr>
+				<td>商品名:</td>
+				<td><input type="text" /></td>
+			</tr>
+			<tr>
+				<td>单价：</td>
+				<td><input type="text" /></td>
+			</tr>
+			<tr>
+				<td>数量：</td>
+				<td><input type="text" disabled /></td>
+			</tr>
+		</table>
+		<div id="edit">
+			<input style="width: 100px;" type="button" value="修改" />
+			<input style="width: 100px;" type="button" value="加入" />
+			<input style="width: 100px;" type="button" value="查询" />
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var all_line = 0;
+	var jsondata = [];
+	//选行的编辑功能
+	$("#tb1").on("click", "td[class!='del']", function() {
+		// console.log($(this).parent().find("td:first").text());
+		showin_editline($(this).parent().find("td:first").text());
+	});
+	//删除功能
+	$("#tb1").on("click", "td[class='del']", function() {
+		$(this).parent().remove();
+	});
+	//插行方法
+	function addline(name, price, num) {
+		var line = "<tr><td>" + (all_line++) + "</td><td>" +
+			name + "</td><td>" +
+			price + "</td><td><input value='" +
+			num + "' /></td><td>" +
+			price * num + "</td><td class='del'>X</td></tr>";
+		$("#tb1").append(line);
+	}
+	//查询插行方法，因需要把特定的编号传入，故需要指定id
+	function addselect(id, name, price, num) {
+		var line = "<tr><td>" + id + "</td><td>" +
+			name + "</td><td>" +
+			price + "</td><td><input value='" +
+			num + "' /></td><td>" +
+			price * num + "</td><td class='del'>X</td></tr>";
+		$("#tb1").append(line);
+	}
+	//输入框改变事件
+	$("#tb1").on("change", "input", function() {
+		jsondata[$(this).parent().parent().find("td:first").text()].num = this.value;
+		var num = this.value * $(this).parent().prev().text();
+		$(this).parent().next().text(num);
+	});
+	//修改按钮被点击
+	$("input[type='button']")[0].onclick = function() {
+		input_arr = $("#info").find("input");
+		jsondata[input_arr[0].value].name = input_arr[1].value;
+		jsondata[input_arr[0].value].price = input_arr[2].value;
+		$("#tb1 tr:eq(" + input_arr[0].value + ") td:eq(1)").text(input_arr[1].value);
+		$("#tb1 tr:eq(" + input_arr[0].value + ") td:eq(2)").text(input_arr[2].value);
+	}
+	//加入按钮被点击
+	$("input[type='button']")[1].onclick = function() {
+		input_arr = $("#info").find("input");
+		var dic = {
+			"name": input_arr[1].value,
+			"price": input_arr[2].value,
+			"num": 50
+		}
+		jsondata.push(dic);
+		addline(dic.name, dic.price, dic.num);
+	}
+	//查询按钮被点击
+	$("input[type='button']")[2].onclick = function() {
+		key_word = $("#info").find("input")[1].value;
+		// console.log(key_word);
+		if (key_word == "") { //查旬空，重置列表
+			$("#tb1").empty();
+			all_line = 0;
+			jsondata.forEach(function(dicitem, dicindex) {
+				addline(dicitem.name, dicitem.price, dicitem.num);
+			});
+		} else {
+			var arr = [];
+			jsondata.forEach(function(dicitem, dicindex) {
+				console.log(dicitem.name.indexOf(key_word));
+				if (dicitem.name.indexOf(key_word) != -1) {
+					arr.push({
+						id: dicindex,
+						name: dicitem.name,
+						price: dicitem.price * 1,
+						num: dicitem.num * 1
+					});
+				}
+			});
+			$("#tb1").empty();
+			arr.forEach(function(item, index) {
+				addselect(item.id, item.name, item.price, item.num);
+			});
+		}
+	}
+	//初始化数据
+	$(function() {
+		$.ajax({
+			type: "get",
+			url: "data.json",
+			dataType: "json",
+			success: function(data) {
+				jsondata = data;
+				data.forEach(function(dicitem, dicindex) {
+					addline(dicitem.name, dicitem.price, dicitem.num);
+				});
+
+			}
+		})
+	});
+	//选行后展示给下面的table可修改内容
+	function showin_editline(line_index) {
+		input_arr = $("#info").find("input");
+		input_arr[0].value = line_index;
+		input_arr[1].value = jsondata[line_index].name;
+		input_arr[2].value = jsondata[line_index].price;
+		input_arr[3].value = jsondata[line_index].num;
+	}
+</script>

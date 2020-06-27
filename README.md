@@ -1548,3 +1548,197 @@ toggle方法里，参数是多个function方法，通过点击轮着触发
 
 hover方法里，参数是多个function方法，第一个鼠标移上，第二个鼠标移出
 
+## demo增删改查
+
+```javascript
+<head>
+		<meta charset="utf-8">
+		<title>数据增删改查</title>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<style>
+			.tb1{
+				width:100%;
+				border:1px solid black;
+				/* 边框重叠 */
+				border-collapse: collapse;
+			}
+			.tb1 td,th{
+				text-align:center;
+				border:1px solid black;
+			}
+		</style>
+		<script>
+			// 模拟从数据库中读去到的数据
+			let data=[
+				{id:1,name:"红苹果",price:8},
+				{id:2,name:"香蕉",price:3},
+				{id:3,name:"葡萄",price:9},
+				{id:4,name:"甜瓜",price:4},
+				{id:5,name:"苦瓜",price:3},
+				{id:6,name:"黄瓜",price:1}
+			];
+			
+			// 加载数据
+			function loadData(){
+				// 先清空原始数据
+				$(".tbd").empty();
+				data.forEach(function(item,index){
+					let tr="<tr><td>"+item.id+"</td><td>"+item.name+"</td><td>"+item.price+
+					"</td><td><input type='button' class='update' value='修改' onclick='beforeUpdate("+index+")'/><input type='button' class='delete' value='删除' onclick='del("+index+")'/></td></tr>";
+					$(".tbd").append(tr);
+				});
+			}
+			
+			// 调用加载数据函数
+			$(loadData);
+			
+			
+			// 删除函数
+			function del(index){
+				if(confirm('确认要残忍的删除掉数据吗?')){
+					data.splice(index,1);
+					// 重新加载数据
+					loadData();
+				}
+			}
+			
+			let n=0;
+			// 修改前读取数据
+			function beforeUpdate(index){
+				n=index;
+				// 获取到的商品对象
+				let g=data[index];
+				$("#index").val(index);  //存放索引
+				$("#gId").val(g.id);
+				$("#gName").val(g.name);
+				$("#gPrice").val(g.price);
+			}
+			
+			// 保存修改后的数据
+			function saveUpdate(){
+				
+				let index=$("#index").val();
+				// 将数据更新到数组中
+				data[index]={
+					id:$("#gId").val(),
+					name:$("#gName").val(),
+					price:$("#gPrice").val()
+				};
+				// 重新加载数据
+				loadData();
+			}
+			
+			
+			/* $(function(){
+				$("table").on("click",".delete",function(){
+					
+				});
+				
+			}); */
+			
+		</script>
+	</head>
+	<body>
+		<table class="tb1">
+			<thead>
+				<tr>
+					<th>编号</th>
+					<th>名称</th>
+					<th>价格</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody class="tbd">
+				
+			</tbody>
+		</table>
+		
+		<form>
+			<table class="tb1" style="width:300px">
+				<tr>
+					<td>编号</td>
+					<td><input type="hidden" id="index"/><input type="text" id="gId"/></td>
+				</tr>
+				<tr>
+					<td>名称</td>
+					<td><input type="text" id="gName"/></td>
+				</tr>
+				<tr>
+					<td>价格</td>
+					<td><input type="text" id="gPrice"/></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="button" value="修改并保存" onclick="saveUpdate()"/>
+						<input type="button" value="录入并保存" onclick="save()"/>
+						</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+```
+
+
+
+# AJAX
+
+同步（synchronous）请求：
+
+​	A请求---->请求处理（如果需要等待）--------------->B请求会等到A请求处理完后才会正常执行。
+
+​	a.html--->登录---->b（处理页面：耗时 ）--->c页面
+
+异步（Asynchronous）请求：
+
+​	A请求----------->请求处理（无需等待完成）---------->接着就可以处理B请求。
+
+借助于异步请求实现页面的局部刷新。
+
+如何实现异步请求：
+
+借助于xmlHttpRequest对象，实现异步请求
+
+```
+<script type="text/javascript">
+var xmlhttp;
+function loadXMLDoc(url)
+{
+xmlhttp=null;
+if (window.XMLHttpRequest)
+  {// code for all new browsers
+  xmlhttp=new XMLHttpRequest();
+  }
+else if (window.ActiveXObject)
+  {// code for IE5 and IE6
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+if (xmlhttp!=null)
+  {
+  状态改变事件
+  xmlhttp.onreadystatechange=state_Change;
+  xmlhttp.open("GET",url,true);
+  xmlhttp.send(null);
+  }
+else
+  {
+  alert("Your browser does not support XMLHTTP.");
+  }
+}
+
+function state_Change()
+{
+if (xmlhttp.readyState==4)
+  {// 4 = "loaded"
+  if (xmlhttp.status==200)
+    {// 200 = OK
+    // ...our code here...
+    }
+  else
+    {
+    alert("Problem retrieving XML data");
+    }
+  }
+}
+</script>
+```
+
