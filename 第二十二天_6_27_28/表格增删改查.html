@@ -35,7 +35,7 @@
 				</tr> -->
 			</tbody>
 		</table>
-		<table id="info">
+		<table id="info" style="float: left;">
 			<tr>
 				<td>编号：</td>
 				<td><input type="text" disabled /></td>
@@ -53,7 +53,12 @@
 				<td><input type="text" disabled /></td>
 			</tr>
 		</table>
-		<div id="edit">
+		<div>总计
+			<span>
+
+			</span>
+		</div>
+		<div id="edit" style="clear: left;">
 			<input style="width: 100px;" type="button" value="修改" />
 			<input style="width: 100px;" type="button" value="加入" />
 			<input style="width: 100px;" type="button" value="查询" />
@@ -70,7 +75,9 @@
 	});
 	//删除功能
 	$("#tb1").on("click", "td[class='del']", function() {
+		// $(this).parent().first().text();
 		$(this).parent().remove();
+		addall();
 	});
 	//插行方法
 	function addline(name, price, num) {
@@ -95,6 +102,7 @@
 		jsondata[$(this).parent().parent().find("td:first").text()].num = this.value;
 		var num = this.value * $(this).parent().prev().text();
 		$(this).parent().next().text(num);
+		addall();
 	});
 	//修改按钮被点击
 	$("input[type='button']")[0].onclick = function() {
@@ -103,6 +111,7 @@
 		jsondata[input_arr[0].value].price = input_arr[2].value;
 		$("#tb1 tr:eq(" + input_arr[0].value + ") td:eq(1)").text(input_arr[1].value);
 		$("#tb1 tr:eq(" + input_arr[0].value + ") td:eq(2)").text(input_arr[2].value);
+		addall();
 	}
 	//加入按钮被点击
 	$("input[type='button']")[1].onclick = function() {
@@ -114,10 +123,11 @@
 		}
 		jsondata.push(dic);
 		addline(dic.name, dic.price, dic.num);
+		addall();
 	}
 	//查询按钮被点击
 	$("input[type='button']")[2].onclick = function() {
-		key_word = $("#info").find("input")[1].value;
+		var key_word = $("#info").find("input")[1].value;
 		// console.log(key_word);
 		if (key_word == "") { //查旬空，重置列表
 			$("#tb1").empty();
@@ -143,6 +153,7 @@
 				addselect(item.id, item.name, item.price, item.num);
 			});
 		}
+		addall()
 	}
 	//初始化数据
 	$(function() {
@@ -155,9 +166,10 @@
 				data.forEach(function(dicitem, dicindex) {
 					addline(dicitem.name, dicitem.price, dicitem.num);
 				});
-
+				addall();
 			}
-		})
+		});
+
 	});
 	//选行后展示给下面的table可修改内容
 	function showin_editline(line_index) {
@@ -166,5 +178,15 @@
 		input_arr[1].value = jsondata[line_index].name;
 		input_arr[2].value = jsondata[line_index].price;
 		input_arr[3].value = jsondata[line_index].num;
+	}
+	//总计，加载列表指定列数据
+	
+	function addall() {
+		var all_price = 0;
+		$("#tb1 tr").each(function(index, item) {
+			// console.log(index,$(item).find("td:eq(4)").text());
+			all_price += $(item).find("td:eq(4)").text() * 1;
+		});
+		$("span").text(all_price);
 	}
 </script>

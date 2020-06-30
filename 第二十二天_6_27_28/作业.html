@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		
+		<!-- <style type="text/css">
+			#table {
+				width: 80%;
+				border-collapse: collapse;
+				text-align: center;
+			}
+		</style> -->
+	</head>
+	<body>
+		<table id="table" class="table table-striped">
+			<thead>
+				<tr>
+					<td>书名</td>
+					<td>作者</td>
+					<td>出版时间</td>
+					<td>价格</td>
+					<td>类别</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<tbody id="tb1">
+				<!-- <tr>
+					<td>0</td>
+					<td>name</td>
+					<td>price</td>
+					<td>num</td>
+					<td>xiaoji</td>
+					<td>X</td>
+				</tr> -->
+			</tbody>
+		</table>
+		<table id="info" style="float: left;" >
+			<tr>
+				<td>书名：</td>
+				<td><input id="name" type="text" /></td>
+			</tr>
+			<tr>
+				<td>作者:</td>
+				<td><input id="author" type="text" /></td>
+			</tr>
+			<tr>
+				<td>出版时间：</td>
+				<td><input id="time" type="text" /></td>
+			</tr>
+			<tr>
+				<td>价格：</td>
+				<td><input id="price" type="text" /></td>
+			</tr>
+			<tr>
+				<td>类别：</td>
+				<td><input id="type" type="text" /></td>
+			</tr>
+		</table>
+		<div>总计
+			<span>
+
+			</span>
+		</div>
+		<div id="edit" style="clear: left;">
+			<input id="inputchange"  type="button" value="修改" class="btn btn-default" />
+			<input id="inputadd"     type="button" value="加入" class="btn btn-default" />
+			<input id="inputselect"  type="button" value="查询" class="btn btn-default" />
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var goods = [
+		[1, "css布局实录", "李超", "2007-01-10", "15", "CSS"],
+		[2, "精通web", "张三", "2017-01-10", "11.1", "WEB"],
+		[3, "优美的HTML", "赵四", "2107-01-10", "12.2", "HTML"],
+		[4, "简单的JavaScript", "吴六", "2009-01-10", "15.9", "JavaScript"],
+		[5, "轻便的Jquery", "刘柳", "2007-02-10", "18.1", "Jquery"],
+		[6, "java入门", "戚七", "2007-03-10", "25", "java"],
+		[7, "WEB开发基础", "小红", "2007-07-10", "35", "WEB"],
+		[8, "赢在客户", "大黄", "2007-01-17", "55", "阅文"],
+		[9, "你好时光", "中蓝", "2007-01-19", "85", "阅文"]
+	];
+	var edit_index = -1; //修改内容用的全局游标
+	$(function() { //初始化数据
+		goods.forEach(function(item, index) {
+			addline(item[0], item[1], item[2], item[3], item[4], item[5]);
+		});
+		document.querySelector("#inputchange").style.display="none";
+		// $("#time").prop("")
+	});
+
+	function addline(id, name, author, time, price, type) { //加行专用方法
+		var line = "<tr name='" + id + "'><td>" +
+			name + "</td><td>" +
+			author + "</td><td>" +
+			time + "</td><td>" +
+			price + "</td><td>" +
+			type + "</td><td class='del'>删除</td></tr>";
+		$("#tb1").append(line);
+	}
+	$("#tb1").on("click", "td[class='del']", function() { //删除事件
+		var bol = confirm("确定要删除？");
+		if (bol) {
+			// console.log();
+			// $(this).parent().attr("name")
+
+			$(this).parent().remove();
+		}
+
+	});
+	$("#tb1").on("click", "td[class!='del']", function() { //修改事件
+		$("#name").val($(this).parent().find("td").eq(0).html());
+		$("#author").val($(this).parent().find("td").eq(1).html());
+		$("#time").val($(this).parent().find("td").eq(2).html());
+		$("#price").val($(this).parent().find("td").eq(3).html());
+		$("#type").val($(this).parent().find("td").eq(4).html());
+		var i = $(this).parent().attr("name");
+		$("#tb1 tr").each(function(index,item){
+			if($(item).attr("name") == i){
+				edit_index = index + 1;
+			}
+		})
+		document.querySelector("#inputchange").style.display="";
+		$("#time").prop("disabled",true);
+	});
+	$("#inputchange").click(function() { //改变事件
+		goods[edit_index - 1][1] = $("#name").val();
+		goods[edit_index - 1][2] = $("#author").val();
+		goods[edit_index - 1][3] = $("#time").val();
+		goods[edit_index - 1][4] = $("#price").val();
+		goods[edit_index - 1][5] = $("#type").val();
+		// console.log(goods[edit_index-1]);
+		$("#tb1 tr").eq(edit_index - 1).find("td").eq(0).text($("#name").val());
+		$("#tb1 tr").eq(edit_index - 1).find("td").eq(1).text($("#author").val());
+		$("#tb1 tr").eq(edit_index - 1).find("td").eq(2).text($("#time").val());
+		$("#tb1 tr").eq(edit_index - 1).find("td").eq(3).text($("#price").val());
+		$("#tb1 tr").eq(edit_index - 1).find("td").eq(4).text($("#type").val());
+		this.style.display="none";
+		$("#time").prop("disabled",false);
+	});
+	$("#inputadd").click(function() { //加行
+		var index = goods.length;
+		var arr = [index + 1, $("#name").val(), $("#author").val(), $("#time").val(), $("#price").val(), $("#type").val()];
+		goods.push(arr);
+		addline(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
+	});
+	$("#inputselect").click(function() { //查询
+		var key_word = $("#name").val();
+		if (key_word == "") {
+			$("#tb1").empty();
+			goods.forEach(function(item, index) {
+				addline(item[0], item[1], item[2], item[3], item[4], item[5]);
+			});
+		} else {
+			var arr = [];
+			goods.forEach(function(item, index) {
+				if (item[1].indexOf(key_word) != -1) {
+					arr.push(item);
+				}
+			});
+			$("#tb1").empty();
+			arr.forEach(function(item, index) {
+				addline(item[0], item[1], item[2], item[3], item[4], item[5]);
+			});
+		}
+	});
+</script>
