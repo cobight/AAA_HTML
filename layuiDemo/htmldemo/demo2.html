@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>原生js双向绑定及其应用</h1>
+		<div class="js-2-1section2 col-sm-10 col-xs-10">
+		<div><input type="text" data-bind-1="peopleName" id="text1"/>
+		<!--data-bind-1="peopleName" 原生js双向绑定的格式-->
+		</div>
+		<div><input type="text" data-bind-2="killName" id="text2" />
+		<button class="btn btn-primary" onclick="randomGroup()">随机词组</button>
+		</div>
+		<p data-bind-1="peopleName"></p>
+		<p data-bind-2="killName"></p>
+		</div>
+	</body>
+	<script>
+		// function fuc(a=5,b=5,c,d=5){
+		// 	console.log(a,b,c,d);
+		// }
+		// fuc(1,2);
+		var arr = ["a","b","2","3","str"];  
+		var result = ("b" in arr);  
+		var result1 = (4 in arr);  
+		document.write(result+"<br>");  
+		document.write(result1+"<br>");  
+	</script>
+</html>

@@ -1425,6 +1425,20 @@ let p1=new Person('aaa','男',18);
 console.log(p1.name+":"+p1.age+":"+p1.sex);
 ```
 
+## 获取所有key、value
+
+```js
+var obj = {
+  "name" : "zh",
+  "age" : 22,
+}
+for(var key in obj){　　//遍历对象的所有属性，包括原型链上的所有属性
+  if(obj.hasOwnProperty(key){ //判断是否是对象自身的属性，而不包含继承自原型链上的属性
+  　　console.log(key);        //键名
+  　　console.log(arr[key]);   //键值　}
+}
+```
+
 # json对象
 
 ## js-object对象转json字符串
@@ -1740,5 +1754,42 @@ if (xmlhttp.readyState==4)
   }
 }
 </script>
+```
+
+## 表单数据获取与提交
+
+$("#formname").serialize();
+
+这样就获取表单里各个表单标签的name与value集合了而且还用&分割开了
+
+
+
+
+
+# function特殊使用
+
+## function隐藏参数(可多参)
+
+```html
+<script>
+    function fuc(msg){
+        // console.log(msg);
+        console.log(arguments);
+    }
+    fuc(1,2,3,4,5);
+</script>
+out:
+msg=1
+Arguments(5)=1,2,3,4,5
+```
+
+## 三种调用方式
+
+https://www.cnblogs.com/chenhuichao/p/8493095.html
+
+```javascript
+func(cs);
+func.call(cs);
+func.apply(cs);
 ```
 
